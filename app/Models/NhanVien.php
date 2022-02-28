@@ -9,7 +9,7 @@ class NhanVien extends Model
 {
     protected $table = 'nhan_viens';
     protected $primaryKey = "ma_nhan_vien";
-    public function thong_tin_nhan_vien()
+    public function taikhoan()
     {
        return $this->belongsTo(TaiKhoan::class,'ma_tai_khoan','ma_nhan_vien');
     }

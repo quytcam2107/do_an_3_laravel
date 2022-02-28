@@ -10,9 +10,7 @@ class TaiKhoan extends Authenticatable
 {
     use HasFactory;
     protected $table = 'tai_khoans';
-
-
-
+    protected $primaryKey = 'ma_nhan_vien';
     protected $fillable = [
         'ma_tai_khoan',
         'ma_nhan_vien',
@@ -21,6 +19,10 @@ class TaiKhoan extends Authenticatable
         'ma_chuc_vu',
         'tinh_trang',
     ];
+    public function taikhoan()
+    {
+        return $this->hasOne(NhanVien::class,'ma_nhan_vien','ma_tai_khoan');
+    }
     protected $hidden = [
         'mat_khau',
     ];
