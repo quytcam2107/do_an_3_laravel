@@ -261,7 +261,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 @section('main-content')
-                    Trang này chỉ để giới thiệu thôi nhé
+
                 @show
             </div>
             <!-- content-wrapper ends -->
