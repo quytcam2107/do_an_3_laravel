@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Common\LoginController;
-use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin',[AdminController::class,'index'])->name('admin.home')->middleware('checkUser');
-Route::get('/admin/login',[LoginController::class,'showFormLogin'])->name('admin.login.showForm');
-Route::post('/admin/login',[LoginController::class,'login']);
-Route::get('/admin/logout',[LoginController::class,'logout']);
-Route::get('/admin/test',[AdminController::class,'test'])->name('test');
+foreach (File::allFiles(__DIR__ . '/web') as $routeFile) {
+    require $routeFile->getPathname();
+}
