@@ -15,7 +15,7 @@ Route::prefix('admin')->group(function () {
 
             //Route Staff
                 Route::group(['prefix' => 'staff'], function () {
-                        Route::get('/',[StaffController::class,'viewStaff'])->name('admin.staff.index');
+                        Route::get('/',[StaffController::class,'showStaff'])->name('admin.staff.index');
                 });
         });
 });

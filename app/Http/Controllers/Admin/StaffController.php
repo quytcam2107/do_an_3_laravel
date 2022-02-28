@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
-    public function viewStaff(){
-        return view('admin.staff.show_staff');
+    public function showStaff(){
+        $title = ['title' => '➢ Nhân Viên '];
+        return view('admin.staff.show_staff')->with($title);
     }
 }
