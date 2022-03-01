@@ -12,13 +12,15 @@ class StaffController extends Controller
 //        $title = ['title' => '➢ Nhân Viên '];
 //        return view('admin.staff.show_staff')->with($title);
         $accounts = TaiKhoan::with('taikhoan')->get();
-       foreach ($accounts as $account){
-           echo "<br>";
-           echo $account->ma_tai_khoan;
-           echo "<br>";
-           echo $account->ten_dang_nhap;
-           echo "<br>";
-           echo $account->taikhoan->ten_nhan_vien;
-       }
+           foreach ($accounts as $account){
+               echo "<br>";
+               echo $account->ma_tai_khoan;
+               echo "<br>";
+               echo $account->mat_khau;
+               echo "<br>";
+               echo $account->ten_dang_nhap;
+               echo "<br>";
+               echo $account->taikhoan->ten_nhan_vien;
+           }
     }
 }

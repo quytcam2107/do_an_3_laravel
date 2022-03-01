@@ -207,7 +207,7 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="">Nhân viên </a>
+                            <li class="nav-item"><a class="nav-link" href="{{route('admin.staff.index')}}">Nhân viên </a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
                             href="#">Typography</a></li>

@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Traits\Relation\TaiKhoanNhanVienRelation;
 
 class TaiKhoan extends Authenticatable
 {
     use HasFactory;
+    use TaiKhoanNhanVienRelation;
+
     protected $table = 'tai_khoans';
-    protected $primaryKey = 'ma_nhan_vien';
+    protected $primaryKey = 'ma_tai_khoan';
     protected $fillable = [
         'ma_tai_khoan',
         'ma_nhan_vien',
@@ -19,10 +22,7 @@ class TaiKhoan extends Authenticatable
         'ma_chuc_vu',
         'tinh_trang',
     ];
-    public function taikhoan()
-    {
-        return $this->hasOne(NhanVien::class,'ma_nhan_vien','ma_tai_khoan');
-    }
+
     protected $hidden = [
         'mat_khau',
     ];
