@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('./tpl_admin/assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('./tpl_admin/assets/images/favicon.ico')}}"/>
+    @yield('css')
 </head>
 
 <body>
