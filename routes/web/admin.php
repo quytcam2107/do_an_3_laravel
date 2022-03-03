@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Common\LoginController;
+use App\Http\Controllers\Admin\RoomController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +17,9 @@ Route::prefix('admin')->group(function () {
             //Route Staff
                 Route::group(['prefix' => 'staff'], function () {
                         Route::get('/',[StaffController::class,'showStaff'])->name('admin.staff.index');
+                });
+                Route::group(['prefix' => 'room'], function () {
+                    Route::get('/',[RoomController::class,'showRoom'])->name('admin.room.index');
                 });
         });
 });
