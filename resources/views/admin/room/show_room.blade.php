@@ -5,10 +5,10 @@
     <style>
 
         .col-md-7{
-            width: 1100px;
+            width: 1200px;
         }
         .col-md-5{
-            width: 500px;
+            width: 100px;
 
         }
         .card-body{
@@ -120,6 +120,9 @@
             overflow-x: hidden;
             height: 91vh;
         }
+        .display_none{
+            display: none;
+        }
     </style>
 @endsection
 
@@ -134,8 +137,12 @@
                             <thead>
                             <th>ID</th>
                             <th>Tên Phòng</th>
+{{--                            <th>Mã loại phòng</th>--}}
+{{--                            <th>Tầng</th>--}}
                             <th>Mô tả</th>
-                            <th>Tình trạng</th>
+{{--                            <th>Giá Phòng</th>--}}
+                            <th>Ảnh Phòng</th>
+                            <th>Tình Trạng Phòng</th>
                             </thead>
                             <tbody>
                             @foreach($rooms as $room)
@@ -145,7 +152,11 @@
                                     " id="{{$room->ma_phong}}">
                                     <td>{{$room->ma_phong ?? '-'}}</td>
                                     <td>{{$room->ten_phong ?? '-'}}</td>
+                                    <td class="display_none">{{$room->ma_loai_phong ?? '-'}}</td>
+                                    <td class="display_none">{{$room->tang ?? '-'}}</td>
                                     <td>{{$room->mo_ta ?? '-'}}</td>
+                                    <td class="display_none">{{$room->gia_phong ?? '-'}}</td>
+                                    <td>{{$room->anh_phong ?? '-'}}</td>
                                     @if($room->tinh_trang_phong == 0)
                                         <td ><button type="button" class="btn btn-gradient-danger btn-fw">Phòng đang bảo trì</button></td>
                                     @endif
@@ -153,7 +164,7 @@
                                         <td><button type="button" class="btn btn-gradient-success btn-fw">Có thể sử dụng</button></td>
                                     @endif
                                     <td>
-                                    <button data-datac="{{$room->ma_phong}}" >View</button>
+                                        <button class="btn  btn-success get_data  mt-3 btn_edit"  id="{{$room->ma_phong}}">Sửa</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -178,91 +189,13 @@
                 </div>
             </div>
         </div>
+
     </div>
-    <!-- Button trigger modal -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button class="btn  btn-primary  mt-3" id="modal_view_left" data-toggle="modal"  data-target="#get_quote_modal">Tab Trái</button>
+    @include('tpl.modal')
 
-                <button class="btn  btn-success  mt-3" id="modal_view_right" data-toggle="modal" data-target="#information_modal">Tab Phải</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- left modal -->
-    <div class="modal modal_outer left_modal fade" id="get_quote_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" >
-        <div class="modal-dialog" role="document">
-            <form method="post"  id="get_quote_frm">
-                <div class="modal-content ">
-                    <!-- <input type="hidden" name="email_e" value="admin@filmscafe.in"> -->
-                    <div class="modal-header">
-                        <h2 class="modal-title">Get a quote</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body get_quote_view_modal_body">
-
-                        <div class="form-row">
-
-                            <div class="form-group col-sm-6">
-                                <label for="name">Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required="" id="name" name="name">
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="email">Email <span class="text-danger">*</span></label>
-                                <input type="email" required="" class="form-control" id="email" name="email">
-                            </div>
-                            <div class="form-group  col-sm-12">
-                                <label for="contact">Mobile Number <span class="text-danger">*</span></label>
-                                <input type="email" required="" class="form-control" id="contact" name="contact">
-                            </div>
-
-                            <div class="form-group  col-sm-12">
-                                <label for="message">Type Message</label>
-                                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-light mr-auto" data-dismiss="modal"><i class="fas fa-window-close mr-2"></i> Cancel</button>
-                        <button type="submit" class="btn btn-primary" id="submit_btn">Submit</button>
-                    </div>
-
-                </div><!-- //modal-content -->
-            </form>
-        </div><!-- modal-dialog -->
-    </div><!-- modal -->
-    <!-- //left modal -->
-
-    <!-- left modal -->
-    <div class="modal modal_outer right_modal fade" id="information_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" >
-        <div class="modal-dialog" role="document">
-            <form method="post"  id="get_quote_frm">
-                <div class="modal-content ">
-                    <!-- <input type="hidden" name="email_e" value="admin@filmscafe.in"> -->
-                    <div class="modal-header">
-                        <h2 class="modal-title">Thông tin phòng</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body get_quote_view_modal_body">
-                        <p>dat la riht</p>
-                    </div>
-
-                </div><!-- modal-content -->
-            </form>
-        </div><!-- modal-dialog -->
-    </div><!-- modal -->
 @endsection
-<script>
-    $(document).on('click', '#table button', function (e) {
-        var d = $(this).data('datac');
-       alert(d);
+@section('js')
+    <script type="text/javascript" src="{{ url('js/admin/room.js') }}"></script>
+@endsection
 
-    })
-</script>
 

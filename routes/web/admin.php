@@ -20,6 +20,8 @@ Route::prefix('admin')->group(function () {
                 });
                 Route::group(['prefix' => 'room'], function () {
                     Route::get('/',[RoomController::class,'showRoom'])->name('admin.room.index');
+                    Route::get('/insertRoom',[RoomController::class,'insertRoom'])->name('admin.room.insert');
+                    Route::get('/getRoomById/{id}',[RoomController::class,'getRoomById']);
                 });
         });
 });
