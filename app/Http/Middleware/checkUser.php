@@ -17,7 +17,7 @@ class checkUser
     public function handle(Request $request, Closure $next)
     {
         if (!Session()->has('loginId')){
-            return redirect('admin/login')->with('fail','Đăng nhập để tiếp tục !');
+            return redirect('/')->with('fail','Đăng nhập để tiếp tục !');
         }
         return $next($request);
     }
