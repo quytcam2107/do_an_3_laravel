@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Common\LoginController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BookRoomController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,10 @@ Route::prefix('admin')->group(function () {
                     Route::get('/insertRoom',[RoomController::class,'insertRoom'])->name('admin.room.insert');
                     Route::get('/getRoomById/{id}',[RoomController::class,'getRoomById']);
                 });
+            Route::group(['prefix' => 'customer'], function () {
+                Route::get('/',[CustomerController::class,'showCustomer'])->name('admin.room.index');
+                Route::get('/getRoomById/{id}',[CustomerController::class,'getRoomById']);
+            });
         });
 });
 

@@ -123,12 +123,13 @@
         .display_none{
             display: none;
         }
+
     </style>
 @endsection
 
 @section('main-content')
     <div class="row">
-        <div class="col-md-7 grid-margin stretch-card">
+        <div class="col-md-9 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Phòng</h4>
@@ -141,7 +142,7 @@
 {{--                            <th>Tầng</th>--}}
                             <th>Mô tả</th>
 {{--                            <th>Giá Phòng</th>--}}
-                            <th>Ảnh Phòng</th>
+
                             <th>Tình Trạng Phòng</th>
                             </thead>
                             <tbody>
@@ -149,6 +150,8 @@
                                 <tr class="
                                     @if($room->tinh_trang_phong == 0){{'table-danger'}}
                                     @endif
+                                @if($room->tinh_trang_phong == 2){{'table-warning'}}
+                                @endif
                                     " id="{{$room->ma_phong}}">
                                     <td>{{$room->ma_phong ?? '-'}}</td>
                                     <td>{{$room->ten_phong ?? '-'}}</td>
@@ -156,12 +159,15 @@
                                     <td class="display_none">{{$room->tang ?? '-'}}</td>
                                     <td>{{$room->mo_ta ?? '-'}}</td>
                                     <td class="display_none">{{$room->gia_phong ?? '-'}}</td>
-                                    <td>{{$room->anh_phong ?? '-'}}</td>
+
                                     @if($room->tinh_trang_phong == 0)
-                                        <td ><button type="button" class="btn btn-gradient-danger btn-fw">Phòng đang bảo trì</button></td>
+                                        <td ><button type="button" class="btn btn-gradient-danger btn-rounded btn-fw">Phòng đang bảo trì</button></td>
                                     @endif
                                     @if($room->tinh_trang_phong == 1)
                                         <td><button type="button" class="btn btn-gradient-success btn-fw">Có thể sử dụng</button></td>
+                                    @endif
+                                    @if($room->tinh_trang_phong == 2)
+                                        <td ><button type="button" class="btn btn-gradient-warning btn-rounded btn-fw">Chưa dọn dẹp</button></td>
                                     @endif
                                     <td>
                                         <button class="btn  btn-success get_data  mt-3 btn_edit"  id="{{$room->ma_phong}}">Sửa</button>
@@ -174,13 +180,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 grid-margin stretch-card">
+        <div class="col-md-3 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
 
                     <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4">
                         <ul>
-                            <li><span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>Tổng số phòng đang có :<span class="float-right">{{count($rooms)}}</span>
+                            <li><span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>Tổng số phòng  :<span class="float-right">{{count($rooms)}}</span>
                             </li>
                             {{--                            <li><span class="legend-dots" style="background:linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))"></span>Direct Click<span class="float-right">30%</span></li>--}}
                             {{--                            <li><span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>Bookmarks Click<span class="float-right">40%</span></li>--}}

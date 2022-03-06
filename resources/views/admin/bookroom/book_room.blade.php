@@ -132,47 +132,132 @@
         .card-img-absolute{
             width: 200px;
         }
-        .card-img-absolute:hover{
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
 
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
         }
     </style>
 @endsection
 
 @section('main-content')
     <div class="row">
-        <h4 class="card-title">Đặt phòng</h4>
-        @foreach($rooms as $room)
+        <h2>Đặt phòng</h2>
+        <p class="pp">Số lượng phòng trống :{{count($rooms_ready)}} </p>
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'room_ready')">Phòng sẵn sàng</button>
+            <button class="tablinks" onclick="openCity(event, 'room_using')">Phòng đang sử dụng</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        </div>
 
-            <div class="col-md-4 stretch-card grid-margin">
-                <div class="
-                @if($room->tinh_trang_phong == 1)
-                {{"card bg-gradient-info card-img-holder"}}
-                @else
-                {{"card bg-gradient-danger card-img-holder text-white"}}
-                @endif
-"
-                >
-                    <div class="card-body">
-                       <a href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}"> <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image" ></a>
-                        <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                        </h4>
-                        <span>
+        <div id="room_ready" class="tabcontent">
+            <h3>DS Phòng Trống</h3>
+
+            @foreach($rooms_ready as $room)
+                <div class="col-md stretch-card grid-margin">
+                    <div class="card bg-gradient-info card-img-holder">
+                        <div class="card-body">
+                             <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image" >
+                            <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                            </h4>
+                            <span>
                             Mô tả :{{$room->mo_ta}}
                             <br>
                         </span>
-                        <h6 class="card-text">
-                            @if($room->tinh_trang_phong == 1)
-                               Tình Trạng :<br><br> Có thể đặt phòng
-                            @endif
-                        </h6>
+                            <h6 class="card-text">
+                                    Tình Trạng :<br><br> Có thể đặt phòng
+                            </h6>
+                            <a class="btn btn-gradient-primary" href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}">Đặt phòng này</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
+
+        <div id="room_using" class="tabcontent">
+            @if(strlen($rooms_using) < 3 )
+                <h3>Không có phòng nào đang sử dụng</h3>
+            @else
+                <h3>Có <span style="color: #0a58ca;">{{count($rooms_using)}}</span> phòng đang được sử dụng</h3>
+            @endif
+            @if(!empty($rooms_using))
+            @foreach($rooms_using as $room)
+                <div class="col-md stretch-card grid-margin">
+                    <div class="card bg-gradient-success card-img-holder text-white">
+                        <div class="card-body">
+                            <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image" >
+                            <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                            </h4>
+                            <span>
+                            Mô tả :{{$room->mo_ta}}
+                            <br>
+                        </span>
+                            <h6 class="card-text">
+                                Tình Trạng :<br><br> Khách đang sử
+                            </h6>
+                            <a class="btn btn-gradient-primary" href="#">Xem</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            @endif
+        </div>
+
+        <div id="Tokyo" class="tabcontent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>
+
     </div>
+
 @endsection
 @section('js')
     <script type="text/javascript" src="{{ url('js/admin/room.js') }}"></script>
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 @endsection
 
 
