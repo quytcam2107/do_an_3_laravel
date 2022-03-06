@@ -31,8 +31,8 @@ Route::prefix('admin')->group(function () {
                     Route::get('/getRoomById/{id}',[RoomController::class,'getRoomById']);
                 });
             Route::group(['prefix' => 'customer'], function () {
-                Route::get('/',[CustomerController::class,'showCustomer'])->name('admin.room.index');
-                Route::get('/getRoomById/{id}',[CustomerController::class,'getRoomById']);
+                Route::get('/',[CustomerController::class,'showCustomer'])->name('admin.customer_showcustomer');
+                Route::get('/getCustomer/{id}',[CustomerController::class,'getRoomById']);
             });
         });
 });
