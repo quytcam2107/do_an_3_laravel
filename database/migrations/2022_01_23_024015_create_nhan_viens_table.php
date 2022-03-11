@@ -16,7 +16,7 @@ class CreateNhanViensTable extends Migration
         Schema::create('nhan_viens', function (Blueprint $table) {
             $table->bigIncrements('ma_nhan_vien');
             $table->string('ten_nhan_vien');
-            $table->integer('gioitinh');
+            $table->integer('gioi_tinh');
             $table->date('ngay_sinh');
             $table->integer('so_dien_thoai');
             $table->timestamps();

@@ -17,10 +17,9 @@ class CreatePhongsTable extends Migration
             $table->bigIncrements('ma_phong');
             $table->string('ten_phong');
             $table->unsignedBigInteger('ma_loai_phong');
-            $table->foreign('ma_loai_phong')->references('ma_loai_phong')->on('loai_phongs')->onDelete('cascade');
             $table->string('tang',10);
             $table->string('mo_ta');
-            $table->float('gia_phong');
+            $table->integer('gia_phong');
             $table->string('anh_phong');
             $table->bigInteger('tinh_trang_phong')->default('1');
             $table->timestamps();

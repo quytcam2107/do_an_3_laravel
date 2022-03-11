@@ -18,5 +18,9 @@ return [
         4 => 'Tầng 4',
         5 => 'Tầng 5',
     ],
+    'chuc_vu' => [
+        1 => 'Giám Đốc',
+        2 => 'Nhân Viên',
+    ],
 
 ];
