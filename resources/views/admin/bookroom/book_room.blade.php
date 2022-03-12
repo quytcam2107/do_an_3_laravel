@@ -1,6 +1,20 @@
 @extends('layouts.app')
 @section('title',$title)
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
+    rel="stylesheet"
+/>
 @section('css')
     <style>
 
@@ -197,13 +211,14 @@
                             <h6 class="card-text">
                                     Tình Trạng :<br><br> Có thể đặt phòng
                             </h6>
-                            <a class="btn btn-gradient-primary" href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}">Đặt phòng này</a>
+                            <button id="btn_book_room" type="button" class="btn btn-primary" onclick="addModalBookRoom({{$room->ma_phong}})"  data-toggle="modal" data-target="#modalQuickView">Đặt Phòng Này</button>
+{{--                            <a class="btn btn-gradient-primary" href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}">Đặt phòng này</a>--}}
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-
+@include('admin.bookroom.modal')
         <div id="room_using" class="tabcontent">
             @if(strlen($rooms_using) < 3 )
                 <h3>Không có phòng nào đang sử dụng</h3>
@@ -241,8 +256,12 @@
     </div>
 
 @endsection
+<script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
+></script>
 @section('js')
-    <script type="text/javascript" src="{{ url('js/admin/room.js') }}"></script>
+    <script type="text/javascript" src="{{ url('js/admin/bookroom.js') }}"></script>
     <script>
         function openCity(evt, cityName) {
             var i, tabcontent, tablinks;

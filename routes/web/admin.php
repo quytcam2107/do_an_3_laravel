@@ -22,7 +22,7 @@ Route::prefix('admin')->group(function () {
                 });
             Route::group(['prefix' => 'bookroom'], function () {
                 Route::get('/',[BookRoomController::class,'bookRoom'])->name('admin.bookroom.index');
-                Route::get('/getBookRoomById/{id}',[BookRoomController::class,'bookRoombyId'])->name('admin.room.bookbyid');
+                Route::get('/getBookRoomById/{id}',[BookRoomController::class,'getFormBookRoom'])->name('admin.room.bookbyid');
 
             });
                 Route::group(['prefix' => 'room'], function () {
