@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title',$title)
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     rel="stylesheet"
@@ -18,20 +20,24 @@
 @section('css')
     <style>
 
-        .col-md-7{
+        .col-md-7 {
             width: 1200px;
         }
-        .col-md-5{
+
+        .col-md-5 {
             width: 100px;
 
         }
-        .card-body{
+
+        .card-body {
             box-shadow: 10px 5px 5px #cdcdcb;
         }
-        .modal.left_modal, .modal.right_modal{
+
+        .modal.left_modal, .modal.right_modal {
             position: fixed;
             z-index: 99999;
         }
+
         .modal.left_modal .modal-dialog,
         .modal.right_modal .modal-dialog {
             position: fixed;
@@ -48,8 +54,8 @@
             /* max-width: 100%; */
             margin: 1.75rem auto;
         }
-        @media (min-width: 576px)
-        {
+
+        @media (min-width: 576px) {
             .left_modal .modal-dialog {
                 max-width: 100%;
             }
@@ -58,6 +64,7 @@
                 max-width: 100%;
             }
         }
+
         .modal.left_modal .modal-content,
         .modal.right_modal .modal-content {
             /*overflow-y: auto;
@@ -80,7 +87,7 @@
         }
 
         /*Left*/
-        .modal.left_modal.fade .modal-dialog{
+        .modal.left_modal.fade .modal-dialog {
             left: -50%;
             -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
             -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
@@ -88,10 +95,9 @@
             transition: opacity 0.3s linear, left 0.3s ease-out;
         }
 
-        .modal.left_modal.fade.show .modal-dialog{
+        .modal.left_modal.fade.show .modal-dialog {
             left: 0;
-            box-shadow: 0px 0px 19px
-            rgba(0,0,0,.5);
+            box-shadow: 0px 0px 19px rgba(0, 0, 0, .5);
         }
 
         /*Right*/
@@ -104,11 +110,9 @@
         }
 
 
-
         .modal.right_modal.fade.show .modal-dialog {
             right: 0;
-            box-shadow: 0px 0px 19px
-            rgba(0,0,0,.5);
+            box-shadow: 0px 0px 19px rgba(0, 0, 0, .5);
         }
 
         /* ----- MODAL STYLE ----- */
@@ -118,14 +122,11 @@
         }
 
 
-
         .modal-header.left_modal, .modal-header.right_modal {
 
             padding: 10px 15px;
-            border-bottom-color:
-                #EEEEEE;
-            background-color:
-                #FAFAFA;
+            border-bottom-color: #EEEEEE;
+            background-color: #FAFAFA;
         }
 
         .modal_outer .modal-body {
@@ -134,18 +135,23 @@
             overflow-x: hidden;
             height: 91vh;
         }
-        .display_none{
+
+        .display_none {
             display: none;
         }
-       .grid-margin{
-           margin-top: 20px;
-       }
-        .row{
+
+        .grid-margin {
+            margin-top: 20px;
+        }
+
+        .row {
             background: white;
         }
-        .card-img-absolute{
+
+        .card-img-absolute {
             width: 200px;
         }
+
         .tab {
             overflow: hidden;
             border: 1px solid #ccc;
@@ -198,27 +204,32 @@
             <h3>DS Phòng Trống</h3>
 
             @foreach($rooms_ready as $room)
+{{--                <input type="text" id="name_room" value="" class="d-none">--}}
                 <div class="col-md stretch-card grid-margin">
                     <div class="card bg-gradient-info card-img-holder">
                         <div class="card-body">
-                             <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image" >
-                            <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                            <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image">
+                            <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i
+                                    class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                             </h4>
                             <span>
                             Mô tả :{{$room->mo_ta}}
                             <br>
                         </span>
                             <h6 class="card-text">
-                                    Tình Trạng :<br><br> Có thể đặt phòng
+                                Tình Trạng :<br><br> Có thể đặt phòng
                             </h6>
-                            <button id="btn_book_room" type="button" class="btn btn-primary" onclick="addModalBookRoom({{$room->ma_phong}})"  data-toggle="modal" data-target="#modalQuickView">Đặt Phòng Này</button>
-{{--                            <a class="btn btn-gradient-primary" href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}">Đặt phòng này</a>--}}
+                            <button id="btn_book_room" type="button" class="btn btn-primary"
+                                    onclick="addModalBookRoom({{$room->ma_phong}},'{{$room->ten_phong}}')" data-toggle="modal"
+                                    data-target="#modalQuickView">Đặt Phòng Này
+                            </button>
+                            {{--                            <a class="btn btn-gradient-primary" href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}">Đặt phòng này</a>--}}
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-@include('admin.bookroom.modal')
+        @include('admin.bookroom.modal')
         <div id="room_using" class="tabcontent">
             @if(strlen($rooms_using) < 3 )
                 <h3>Không có phòng nào đang sử dụng</h3>
@@ -226,25 +237,26 @@
                 <h3>Có <span style="color: #0a58ca;">{{count($rooms_using)}}</span> phòng đang được sử dụng</h3>
             @endif
             @if(!empty($rooms_using))
-            @foreach($rooms_using as $room)
-                <div class="col-md stretch-card grid-margin">
-                    <div class="card bg-gradient-success card-img-holder text-white">
-                        <div class="card-body">
-                            <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image" >
-                            <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                            </h4>
-                            <span>
+                @foreach($rooms_using as $room)
+                    <div class="col-md stretch-card grid-margin">
+                        <div class="card bg-gradient-success card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image">
+                                <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i
+                                        class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                </h4>
+                                <span>
                             Mô tả :{{$room->mo_ta}}
                             <br>
                         </span>
-                            <h6 class="card-text">
-                                Tình Trạng :<br><br> Khách đang sử
-                            </h6>
-                            <a class="btn btn-gradient-primary" href="#">Xem</a>
+                                <h6 class="card-text">
+                                    Tình Trạng :<br><br> Khách đang sử
+                                </h6>
+                                <a class="btn btn-gradient-primary" href="#">Xem</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
             @endif
         </div>
 

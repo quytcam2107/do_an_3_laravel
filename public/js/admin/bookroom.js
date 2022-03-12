@@ -3,10 +3,12 @@
 //        console.log('okela');
 //     });
 // });
-function addModalBookRoom(id) {
+function addModalBookRoom(id,nameroom) {
     $('#idRoom').val(id);
+    $('#name_room').val(nameroom);
 }
 function submitAddBookRoom() {
     var roomId = $('#idRoom').val();
-    console.log(roomId);
+    var roomName = $('#name_room').val();
+    console.log(roomName);
 }

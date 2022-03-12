@@ -63,7 +63,8 @@
                     </div>
                     <div class="col-lg-7">
                         <h2 class="h2-responsive product-name">
-                            <strong>Product Name</strong>
+                            <strong><span>Tên phòng</span></strong>
+                            <input style="width: 20%;" type="text" class="" id="name_room">
                         </h2>
                         <h4 class="h4-responsive">
               <span class="green-text">
