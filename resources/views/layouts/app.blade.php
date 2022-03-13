@@ -230,8 +230,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/icons/mdi.html">
-                        <span class="menu-title">Thuê - Trả Phòng</span>
+                    <a class="nav-link" href="{{route('admin.checkout')}}">
+                        <span class="menu-title">Trả Phòng</span>
                         <i class="mdi mdi-table-large menu-icon"></i>
                     </a>
                 </li>

@@ -9,6 +9,12 @@ class Phong extends Model
 {
     use HasFactory;
 
+    public const ROOM_MAINTENANCE = 0;
+    public const ROOM_READY = 1;
+    public const ROOM_CLEANING = 2;
+    public const ROOM_USING = 3;
+    public const ROOM_ODERED = 4;
+
     protected $table = 'phongs';
     protected $primaryKey = 'ma_phong';
     protected $fillable = [
@@ -23,4 +29,10 @@ class Phong extends Model
     protected $hidden = [
 
     ];
+
+    public function scopeStatusready()
+    {
+        $query = Phong::where('tinh_trang_phong', '=', Phong::ROOM_READY);
+        return $query;
+    }
 }
