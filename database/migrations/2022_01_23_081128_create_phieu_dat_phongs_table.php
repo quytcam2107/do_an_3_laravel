@@ -17,12 +17,12 @@ class CreatePhieuDatPhongsTable extends Migration
            $table->bigIncrements('ma_phieu_dat_phong');
             $table->bigInteger('ma_khach_hang');
             $table->bigInteger('ma_phong_dat');
-            $table->bigInteger('so_nguoi_di_kem');
-            $table->float('tien_dat_coc');
+            $table->bigInteger('so_nguoi_di_kem')->nullable();
+            $table->float('tien_dat_coc')->nullable();
             $table->dateTime('ngay_den');
             $table->dateTime('ngay_di');
             $table->string('nguoi_tao_phieu');;
-            $table->string('ghi_chu');;
+            $table->string('ghi_chu')->nullable();
             $table->timestamps();
         });
     }

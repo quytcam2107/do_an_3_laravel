@@ -19,16 +19,8 @@ class BookRoomController extends Controller
 
     public function bookRoom()
     {
-        $title = '➢ Book phòng ';
-        $rooms_ready = DB::table('phongs')->where('tinh_trang_phong', 1)->get();
-        $rooms_using = DB::table('phongs')->where('tinh_trang_phong', 3)->get();
-        $customers = DB::table('khach_hangs')->get();
-        return view('admin.bookroom.book_room')->with([
-            'title' => $title,
-            'rooms_ready' => $rooms_ready,
-            'rooms_using' => $rooms_using,
-            'customers' => $customers
-        ]);
+        $data = $this->bookRoomService->index();
+        return view('admin.bookroom.book_room')->with($data);
     }
 
     public function getFormBookRoom(Request $request)

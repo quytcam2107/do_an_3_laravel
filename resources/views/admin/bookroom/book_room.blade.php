@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',$title)
+@section('title','➢ Book phòng ')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -202,12 +202,11 @@
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'room_ready')">Phòng sẵn sàng</button>
             <button class="tablinks" onclick="openCity(event, 'room_using')">Phòng đang sử dụng</button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Phòng chờ xác nhận</button>
         </div>
 
         <div id="room_ready" class="tabcontent">
             <h3>DS Phòng Trống</h3>
-
             @foreach($rooms_ready as $room)
 {{--                <input type="text" id="name_room" value="" class="d-none">--}}
                 <div class="col-md stretch-card grid-margin">
@@ -234,7 +233,6 @@
                 </div>
             @endforeach
         </div>
-        @include('admin.bookroom.modal')
         <div id="room_using" class="tabcontent">
             @if(strlen($rooms_using) < 3 )
                 <h3>Không có phòng nào đang sử dụng</h3>
@@ -266,12 +264,38 @@
         </div>
 
         <div id="Tokyo" class="tabcontent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
+            <h3>Phòng đang được đặt</h3>
+            @if(strlen($rooms_odered) < 3 )
+                <h3>Không có phòng nào đang sử dụng</h3>
+            @else
+                <h3>Có <span style="color: #0a58ca;">{{count($rooms_odered)}}</span> phòng đang chờ confirm</h3>
+            @endif
+            @if(!empty($rooms_odered))
+                @foreach($rooms_odered as $room)
+                    <div class="col-md stretch-card grid-margin">
+                        <div class="card bg-gradient-danger card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image">
+                                <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i
+                                        class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                </h4>
+                                <span>
+                            Mô tả :{{$room->mo_ta}}
+                            <br>
+                        </span>
+                                <h6 class="card-text">
+                                    Tình Trạng :<br><br> Khách đang sử
+                                </h6>
+                                <a class="btn btn-gradient-primary" href="#">Xem</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
 
     </div>
-
+    @include('admin.bookroom.modal')
 @endsection
 <script
     type="text/javascript"

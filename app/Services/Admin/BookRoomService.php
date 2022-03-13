@@ -2,8 +2,10 @@
 
 namespace App\Services\Admin;
 
+use App\Models\KhachHang;
 use App\Models\PhieuDatPhong;
 use App\Models\Phong;
+use Illuminate\Support\Facades\DB;
 
 class BookRoomService
 {
@@ -13,10 +15,25 @@ class BookRoomService
 
     protected $rooms;
 
-    public function __construct(PhieuDatPhong $roompass, Phong $rooms)
+    public function __construct(PhieuDatPhong $roompass, Phong $rooms, KhachHang $customer)
     {
         $this->model = $roompass;
         $this->room = $rooms;
+        $this->customer = $customer;
+    }
+
+    public function index()
+    {
+        $rooms_ready = $this->room->where('tinh_trang_phong', PhieuDatPhong::ROOM_READY)->get();
+        $rooms_using = $this->room->where('tinh_trang_phong', PhieuDatPhong::ROOM_USING)->get();
+        $rooms_odered = $this->room->where('tinh_trang_phong', PhieuDatPhong::ROOM_ODERED)->get();
+        $customer = $this->customer->get();
+        return [
+            'rooms_ready' => $rooms_ready,
+            'rooms_using' => $rooms_using,
+            'customers' => $customer,
+            'rooms_odered' => $rooms_odered,
+        ];
     }
 
     public function insertRoomPass($params)
@@ -31,7 +48,7 @@ class BookRoomService
             'nguoi_tao_phieu' => 1,
             'ghi_chu' => $params['memo'],
         ]);
-        $roomUpdateStatus = $this->room->where('ma_phong',$params['roomId'])->update(['tinh_trang_phong' => 0]);
+        $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => 4]);
     }
 
     public function getCustomerById($id)
