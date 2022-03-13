@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title',$title)
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -187,6 +188,10 @@
             border: 1px solid #ccc;
             border-top: none;
         }
+        .modal-content{
+            background: #9ca3af;
+            border-radius: 5px;
+        }
     </style>
 @endsection
 
@@ -220,7 +225,7 @@
                                 Tình Trạng :<br><br> Có thể đặt phòng
                             </h6>
                             <button id="btn_book_room" type="button" class="btn btn-primary"
-                                    onclick="addModalBookRoom({{$room->ma_phong}},'{{$room->ten_phong}}')" data-toggle="modal"
+                                    onclick="addModalBookRoom({{$room->ma_phong}},'{{$room->ten_phong}}',{{$room->gia_phong}})" data-toggle="modal"
                                     data-target="#modalQuickView">Đặt Phòng Này
                             </button>
                             {{--                            <a class="btn btn-gradient-primary" href="{{'bookroom/getBookRoomById/'.$room->ma_phong}}">Đặt phòng này</a>--}}

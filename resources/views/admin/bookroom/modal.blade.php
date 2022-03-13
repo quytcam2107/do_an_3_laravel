@@ -16,12 +16,12 @@
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <img class="d-block w-100"
-                                         src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(23).webp"
+                                         src="https://noithatmyhouse.com/wp-content/uploads/2019/05/tieu-chuan-thiet-ke-khach-san-5-sao_16.jpg"
                                          alt="First slide">
                                 </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100"
-                                         src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(24).webp"
+                                         src="https://viettravelo.com/wp-content/uploads/2018/05/khach-san-indochine.jpg"
                                          alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
@@ -63,18 +63,17 @@
                     </div>
                     <div class="col-lg-7">
                         <h2 class="h2-responsive product-name">
-                            <strong><span>Tên phòng</span></strong>
-                            <input style="width: 20%;" type="text" class="" id="name_room">
+                            <strong><span>Phòng</span></strong>
+                            <input style="width: 20%;" type="text" class="" id="name_room" disabled><br>
+                            <span>Giá Phòng</span>
+                            <input style="width: 40%;" type="text" class="" id="price_room" disabled>VND
                         </h2>
                         <h4 class="h4-responsive">
-              <span class="green-text">
-                <strong>$49</strong>
-              </span>
+                            {{--              <span class="green-text">--}}
+                            {{--                    Giá phòng :<input id="price_room">--}}
+                            {{--              </span>--}}
                             <span class="grey-text">
-                <small>
-                  <s>$89</s>
-                </small>
-              </span>
+                             </span>
                         </h4>
 
                         <!--Accordion wrapper-->
@@ -89,7 +88,7 @@
                                        aria-expanded="true"
                                        aria-controls="collapseOne1">
                                         <h5 class="mb-0">
-                                            Collapsible Group Item #1 <i class="fas fa-angle-down rotate-icon"></i>
+                                            Thông tin khách hàng<i class="fas fa-angle-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
@@ -99,12 +98,36 @@
                                      aria-labelledby="headingOne1"
                                      data-parent="#accordionEx">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad
-                                        squid. 3
-                                        wolf moon officia aute,
-                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                        eiusmod.
+                                        <label>
+                                           Khách hàng :
+                                            <select name="id_customer" id="id_customer">
+                                                @foreach($customers as $customer)
+                                                    <option value="{{$customer->ma_khach_hang}}">
+                                                        {{$customer->ho_ten_khach}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </label>
+                                        <label>
+                                            Số người đi kèm :
+                                          <input type="number" id="attachment_number">
+                                        </label>
+                                        <label>
+                                            Số tiền đặt cọc :
+                                            <input type="number" id="deposit">
+                                        </label>
+                                        <label>
+                                           Ngày đến :
+                                            <input type="date" id="day_to" >
+                                        </label>
+                                        <label>
+                                            Ngày đi :
+                                            <input type="date" id="day_out" >
+                                        </label>
+                                        <label>
+                                            Ghi Chú :
+                                            <textarea id="memo"  cols="30" rows="5"></textarea>
+                                        </label>
                                     </div>
                                 </div>
 
@@ -112,64 +135,64 @@
                             <!-- Accordion card -->
 
                             <!-- Accordion card -->
-                            <div class="card">
+{{--                            <div class="card">--}}
 
-                                <!-- Card header -->
-                                <div class="card-header" role="tab" id="headingTwo2">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseTwo2"
-                                       aria-expanded="false" aria-controls="collapseTwo2">
-                                        <h5 class="mb-0">
-                                            Collapsible Group Item #2 <i class="fas fa-angle-down rotate-icon"></i>
-                                        </h5>
-                                    </a>
-                                </div>
+{{--                                <!-- Card header -->--}}
+{{--                                <div class="card-header" role="tab" id="headingTwo2">--}}
+{{--                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"--}}
+{{--                                       href="#collapseTwo2"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseTwo2">--}}
+{{--                                        <h5 class="mb-0">--}}
+{{--                                            Collapsible Group Item #2 <i class="fas fa-angle-down rotate-icon"></i>--}}
+{{--                                        </h5>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
 
-                                <!-- Card body -->
-                                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
-                                     data-parent="#accordionEx">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad
-                                        squid. 3
-                                        wolf moon officia aute,
-                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                        eiusmod.
-                                    </div>
-                                </div>
+{{--                                <!-- Card body -->--}}
+{{--                                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"--}}
+{{--                                     data-parent="#accordionEx">--}}
+{{--                                    <div class="card-body">--}}
+{{--                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry--}}
+{{--                                        richardson ad--}}
+{{--                                        squid. 3--}}
+{{--                                        wolf moon officia aute,--}}
+{{--                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum--}}
+{{--                                        eiusmod.--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                            </div>
+{{--                            </div>--}}
                             <!-- Accordion card -->
 
                             <!-- Accordion card -->
-                            <div class="card">
+{{--                            <div class="card">--}}
 
-                                <!-- Card header -->
-                                <div class="card-header" role="tab" id="headingThree3">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"
-                                       href="#collapseThree3"
-                                       aria-expanded="false" aria-controls="collapseThree3">
-                                        <h5 class="mb-0">
-                                            Collapsible Group Item #3 <i class="fas fa-angle-down rotate-icon"></i>
-                                        </h5>
-                                    </a>
-                                </div>
+{{--                                <!-- Card header -->--}}
+{{--                                <div class="card-header" role="tab" id="headingThree3">--}}
+{{--                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"--}}
+{{--                                       href="#collapseThree3"--}}
+{{--                                       aria-expanded="false" aria-controls="collapseThree3">--}}
+{{--                                        <h5 class="mb-0">--}}
+{{--                                            Collapsible Group Item #3 <i class="fas fa-angle-down rotate-icon"></i>--}}
+{{--                                        </h5>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
 
-                                <!-- Card body -->
-                                <div id="collapseThree3" class="collapse" role="tabpanel"
-                                     aria-labelledby="headingThree3"
-                                     data-parent="#accordionEx">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad
-                                        squid. 3
-                                        wolf moon officia aute,
-                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                        eiusmod.
-                                    </div>
-                                </div>
+{{--                                <!-- Card body -->--}}
+{{--                                <div id="collapseThree3" class="collapse" role="tabpanel"--}}
+{{--                                     aria-labelledby="headingThree3"--}}
+{{--                                     data-parent="#accordionEx">--}}
+{{--                                    <div class="card-body">--}}
+{{--                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry--}}
+{{--                                        richardson ad--}}
+{{--                                        squid. 3--}}
+{{--                                        wolf moon officia aute,--}}
+{{--                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum--}}
+{{--                                        eiusmod.--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                            </div>
+{{--                            </div>--}}
                             <!-- Accordion card -->
 
                         </div>
@@ -177,35 +200,35 @@
 
 
                         <!-- Add to Cart -->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
+{{--                        <div class="card-body">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-6">--}}
 
-                                    <select class="md-form mdb-select colorful-select dropdown-primary">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">White</option>
-                                        <option value="2">Black</option>
-                                        <option value="3">Pink</option>
-                                    </select>
-                                    <label>Select color</label>
+{{--                                    <select class="md-form mdb-select colorful-select dropdown-primary">--}}
+{{--                                        <option value="" disabled selected>Choose your option</option>--}}
+{{--                                        <option value="1">White</option>--}}
+{{--                                        <option value="2">Black</option>--}}
+{{--                                        <option value="3">Pink</option>--}}
+{{--                                    </select>--}}
+{{--                                    <label>Select color</label>--}}
 
-                                </div>
-                                <div class="col-md-6">
+{{--                                </div>--}}
+{{--                                <div class="col-md-6">--}}
 
-                                    <select class="md-form mdb-select colorful-select dropdown-primary">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">XS</option>
-                                        <option value="2">S</option>
-                                        <option value="3">L</option>
-                                    </select>
-                                    <label>Select size</label>
+{{--                                    <select class="md-form mdb-select colorful-select dropdown-primary">--}}
+{{--                                        <option value="" disabled selected>Choose your option</option>--}}
+{{--                                        <option value="1">XS</option>--}}
+{{--                                        <option value="2">S</option>--}}
+{{--                                        <option value="3">L</option>--}}
+{{--                                    </select>--}}
+{{--                                    <label>Select size</label>--}}
 
-                                </div>
-                            </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="text-center">
 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary" onclick="submitAddBookRoom()">Add to cart
+                                <button class="btn btn-primary" onclick="submitAddBookRoom()">Đặt phòng
                                     <i class="fas fa-cart-plus ml-2" aria-hidden="true"></i>
                                 </button>
                             </div>

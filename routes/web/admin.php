@@ -23,7 +23,8 @@ Route::prefix('admin')->group(function () {
             Route::group(['prefix' => 'bookroom'], function () {
                 Route::get('/',[BookRoomController::class,'bookRoom'])->name('admin.bookroom.index');
                 Route::get('/getBookRoomById/{id}',[BookRoomController::class,'getFormBookRoom'])->name('admin.room.bookbyid');
-
+                Route::get('/addRoomPass/',[BookRoomController::class,'getFormBookRoom']);
+                Route::post('/addRoomPass/',[BookRoomController::class,'addRoomPass']);
             });
                 Route::group(['prefix' => 'room'], function () {
                     Route::get('/',[RoomController::class,'showRoom'])->name('admin.room.index');

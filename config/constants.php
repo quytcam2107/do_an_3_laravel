@@ -5,6 +5,7 @@ return [
         1 => 'Có thể sử dụng',
         2 => 'Đang dọn dẹp',
         3 => 'Đang sử dụng',
+        4 => 'Đã có người đặt',
     ],
     'loai_phong' => [
         1 => 'Standard (STD)',

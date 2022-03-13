@@ -15,15 +15,15 @@ class CreatePhieuDangKisTable extends Migration
     {
         Schema::create('phieu_dang_kis', function (Blueprint $table) {
             $table->bigIncrements('ma_phieu_dang_ki');
-            $table->integer('so_phong_dat');
-            $table->dateTime('thoi_gian_dat_phong');
-            $table->bigInteger('ma_khach_hang');
-            $table->bigInteger('so_luong_nguoi_lon');
-            $table->bigInteger('so_luong_tre_em');
-            $table->string('ghi_chu');
-//            $table->unsignedBigInteger('ma_khach_hang');
-//            table->foreign('ma_khach_hang')->references('ma_khach_hang')->on('khach_hangs')->onDelete('cascade');
-            $table->timestamps();
+//            $table->integer('so_phong_dat');
+//            $table->dateTime('thoi_gian_dat_phong');
+//            $table->bigInteger('ma_khach_hang');
+//            $table->bigInteger('so_luong_nguoi_lon');
+//            $table->bigInteger('so_luong_tre_em');
+//            $table->string('ghi_chu');
+////            $table->unsignedBigInteger('ma_khach_hang');
+////            table->foreign('ma_khach_hang')->references('ma_khach_hang')->on('khach_hangs')->onDelete('cascade');
+//            $table->timestamps();
         });
     }
 
