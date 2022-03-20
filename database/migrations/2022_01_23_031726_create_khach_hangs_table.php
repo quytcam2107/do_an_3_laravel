@@ -16,13 +16,13 @@ class CreateKhachHangsTable extends Migration
         Schema::create('khach_hangs', function (Blueprint $table) {
             $table->bigIncrements('ma_khach_hang');
             $table->string('ho_ten_khach');
-            $table->string('email');
+            $table->string('email')->unique()->nullable();
             $table->string('dia_chi');
             $table->bigInteger('gioi_tinh');
-            $table->integer('so_dien_thoai');
+            $table->integer('so_dien_thoai')->unique();
             $table->string('quoc_tich');
-            $table->string('so_cmnd');
-            $table->string('ghi_chu');
+            $table->string('so_cmnd')->unique();
+            $table->string('ghi_chu')->nullable();
             $table->timestamps();
         });
     }
