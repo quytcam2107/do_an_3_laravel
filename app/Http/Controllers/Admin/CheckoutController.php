@@ -18,6 +18,6 @@ class CheckoutController extends Controller
     public function checkOut()
     {
         $data = $this->checkout->getListCheckout();
-        return $data;
+        return view('admin.checkout.checkout',compact('data'));
     }
 }

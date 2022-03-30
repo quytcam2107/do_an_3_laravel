@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Relation\PhieuDatPhongDatPhongRelation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PhieuDatPhong extends Model
 {
     use HasFactory;
+    use PhieuDatPhongDatPhongRelation;
 
     protected $table = 'phieu_dat_phongs';
     protected $primaryKey = 'ma_phieu_dat_phong ';

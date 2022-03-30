@@ -7,6 +7,7 @@ use App\Models\PhieuDatPhong;
 use App\Models\Phong;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
+use  App\Models\Traits\Relation\PhieuDatPhongDatPhongRelation;
 
 class BookRoomService
 {
@@ -63,5 +64,13 @@ class BookRoomService
     {
         $customer = $this->customer->find($id);
         return response()->json(['data' => $customer]);
+    }
+    public function viewConfirm($id){
+        // $idCustomer = PhieuDatPhong::with('customer')->get();
+
+        $room =  PhieuDatPhong::with('datphong','customer')->where('ma_phong_dat',$id)->get();
+        // $customers =  PhieuDatPhong::with('khachhang')->where('ma_khach_hang',$room['ma_khach_hang']);
+        //  $mer = array_merge(array($room),array($customers));
+        return $room;
     }
 }

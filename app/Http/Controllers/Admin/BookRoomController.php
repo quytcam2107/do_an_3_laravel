@@ -35,4 +35,9 @@ class BookRoomController extends Controller
         $result = $this->bookRoomService->insertRoomPass($input);
         return response()->json($result);
     }
+    public function viewConfirm(Request $request){
+        $data = $this->bookRoomService->viewConfirm($request->id);
+         return view('admin.bookroom.viewconfirm',compact('data'));
+
+    }
 }

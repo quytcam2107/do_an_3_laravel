@@ -262,7 +262,6 @@
                 @endforeach
             @endif
         </div>
-
         <div id="Tokyo" class="tabcontent">
             <h3>Phòng đang được đặt</h3>
             @if(strlen($rooms_odered) < 3 )
@@ -286,7 +285,7 @@
                                 <h6 class="card-text">
                                     Tình Trạng :<br><br> Khách đang sử
                                 </h6>
-                                <a class="btn btn-gradient-primary" href="#">Xem</a>
+                                <a class="btn btn-gradient-primary" href="{{'bookroom/viewconfirm/'.$room->ma_phong}}">Kiểm Tra & Xác Nhận</a>
                             </div>
                         </div>
                     </div>

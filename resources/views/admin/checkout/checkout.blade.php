@@ -5,6 +5,7 @@
         crossorigin="anonymous"></script>
 @section('css')
     <link href="{{ url('css/common/css_common.css') }}" rel="stylesheet">
+    <link href="{{ url('css/common/checkout.css') }}" rel="stylesheet">
 @endsection
 
 @section('main-content')
