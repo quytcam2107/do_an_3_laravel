@@ -25,4 +25,8 @@ class KhachHang extends Model
     protected $hidden = [
 
     ];
+//     public function getAgeAttribute()
+// {
+//     return \Carbon::createFromFormat('Y-m-d', $this->dob)->diffInYears(\Carbon::now());
+// }
 }

@@ -202,11 +202,16 @@
             {{-- {{dd($data)}} --}}
             @foreach ($data as $key)
             <div class="card-body">
+                <h4 class="card-title">Thông tin khách hàng</h4>
                 <p>Tên khách hàng : {{ $key->customer['ho_ten_khach']}}</p>
+                <p>Địa chỉ : {{ $key->customer['dia_chi']}}</p>
+                <p>Giới tính: {{ $key->customer['gioi_tinh']}}</p>
+                <p>Địa chỉ : {{ $key->customer['so_cmnd']}}</p>
+                <h4 class="card-title">Thông tin phòng</h4>
                 <p>Tên phòng : {{ $key->datphong['ten_phong']}}</p>
                 <p>Giá Phòng : {{ $key->datphong['gia_phong']}}</p>
                 <p>Tiền đặt cọc : {{ $key->tien_dat_coc}}</p>
-
+                <button>Xác nhận đặt phòng</button>
             </div>
             @endforeach
         </div>
