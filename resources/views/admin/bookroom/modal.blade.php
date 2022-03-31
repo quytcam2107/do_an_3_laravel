@@ -88,7 +88,7 @@
                                        aria-expanded="true"
                                        aria-controls="collapseOne1">
                                         <h5 class="mb-0">
-                                            Thông tin khách hàng<i class="fas fa-angle-down rotate-icon"></i>
+                                            Thông tin đặt phòng<i class="fas fa-angle-down rotate-icon"></i>
                                         </h5>
                                     </a>
                                 </div>
@@ -97,134 +97,64 @@
                                 <div id="collapseOne1" class="collapse show" role="tabpanel"
                                      aria-labelledby="headingOne1"
                                      data-parent="#accordionEx">
-                                    <div class="card-body">
-                                        <label>
-                                           Khách hàng :
-                                            <select name="id_customer" id="id_customer">
+                                    <div class="form-group row">
+                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label"> Khách hàng :</label>
+                                        <div class="col-sm-9">
+                                            <select name="id_customer" id="id_customer" class="form-control">
                                                 @foreach($customers as $customer)
                                                     <option value="{{$customer->ma_khach_hang}}">
                                                         {{$customer->ho_ten_khach}}
                                                     </option>
                                                 @endforeach
                                             </select>
-                                        </label>
-                                        <label>
-                                            Số người đi kèm :
-                                          <input type="number" id="attachment_number">
-                                        </label>
-                                        <label>
-                                            Số tiền đặt cọc :
-                                            <input type="number" id="deposit">
-                                        </label>
-                                        <label>
-                                           Ngày đến :
-                                            <input type="date" id="day_to" >
-                                        </label>
-                                        <label>
-                                            Ngày đi :
-                                            <input type="date" id="day_out" >
-                                        </label>
-                                        <label>
-                                            Ghi Chú :
-                                            <textarea id="memo"  cols="30" rows="5"></textarea>
-                                        </label>
+                                        </div>
+                                    </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số người đi kèm :</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" id="attachment_number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label"> Số tiền đặt cọc :</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" id="deposit" class="form-control">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">  Ngày nhận phòng :</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" id="day_to" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label"> Ngày đi :</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" id="day_out" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label"> Trạng thái</label>
+                                            <div class="col-sm-9">
+                                                <select name="status_book" id="status_book" class="form-control">
+                                                    <option value="1">Nhận phòng luôn</option>
+                                                    <option value="0">Chờ nhận phòng</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">  Ghi Chú :</label>
+                                            <div class="col-sm-9">
+                                                <textarea id="memo"  cols="30" rows="5"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <!-- Accordion card -->
-
-                            <!-- Accordion card -->
-{{--                            <div class="card">--}}
-
-{{--                                <!-- Card header -->--}}
-{{--                                <div class="card-header" role="tab" id="headingTwo2">--}}
-{{--                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"--}}
-{{--                                       href="#collapseTwo2"--}}
-{{--                                       aria-expanded="false" aria-controls="collapseTwo2">--}}
-{{--                                        <h5 class="mb-0">--}}
-{{--                                            Collapsible Group Item #2 <i class="fas fa-angle-down rotate-icon"></i>--}}
-{{--                                        </h5>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-
-{{--                                <!-- Card body -->--}}
-{{--                                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"--}}
-{{--                                     data-parent="#accordionEx">--}}
-{{--                                    <div class="card-body">--}}
-{{--                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry--}}
-{{--                                        richardson ad--}}
-{{--                                        squid. 3--}}
-{{--                                        wolf moon officia aute,--}}
-{{--                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum--}}
-{{--                                        eiusmod.--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
-                            <!-- Accordion card -->
-
-                            <!-- Accordion card -->
-{{--                            <div class="card">--}}
-
-{{--                                <!-- Card header -->--}}
-{{--                                <div class="card-header" role="tab" id="headingThree3">--}}
-{{--                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx"--}}
-{{--                                       href="#collapseThree3"--}}
-{{--                                       aria-expanded="false" aria-controls="collapseThree3">--}}
-{{--                                        <h5 class="mb-0">--}}
-{{--                                            Collapsible Group Item #3 <i class="fas fa-angle-down rotate-icon"></i>--}}
-{{--                                        </h5>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-
-{{--                                <!-- Card body -->--}}
-{{--                                <div id="collapseThree3" class="collapse" role="tabpanel"--}}
-{{--                                     aria-labelledby="headingThree3"--}}
-{{--                                     data-parent="#accordionEx">--}}
-{{--                                    <div class="card-body">--}}
-{{--                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry--}}
-{{--                                        richardson ad--}}
-{{--                                        squid. 3--}}
-{{--                                        wolf moon officia aute,--}}
-{{--                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum--}}
-{{--                                        eiusmod.--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
-                            <!-- Accordion card -->
 
                         </div>
-                        <!-- Accordion wrapper -->
-
-
-                        <!-- Add to Cart -->
-{{--                        <div class="card-body">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-6">--}}
-
-{{--                                    <select class="md-form mdb-select colorful-select dropdown-primary">--}}
-{{--                                        <option value="" disabled selected>Choose your option</option>--}}
-{{--                                        <option value="1">White</option>--}}
-{{--                                        <option value="2">Black</option>--}}
-{{--                                        <option value="3">Pink</option>--}}
-{{--                                    </select>--}}
-{{--                                    <label>Select color</label>--}}
-
-{{--                                </div>--}}
-{{--                                <div class="col-md-6">--}}
-
-{{--                                    <select class="md-form mdb-select colorful-select dropdown-primary">--}}
-{{--                                        <option value="" disabled selected>Choose your option</option>--}}
-{{--                                        <option value="1">XS</option>--}}
-{{--                                        <option value="2">S</option>--}}
-{{--                                        <option value="3">L</option>--}}
-{{--                                    </select>--}}
-{{--                                    <label>Select size</label>--}}
-
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="text-center">
 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

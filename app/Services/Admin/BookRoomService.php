@@ -40,24 +40,21 @@ class BookRoomService
 
     public function insertRoomPass($params)
     {
-        DB::beginTransaction();
-        try {
-            $roomInsert = $this->model->create([
-                'ma_khach_hang' => $params['customerID'],
-                'ma_phong_dat' => $params['roomId'],
-                'so_nguoi_di_kem' => $params['attachmentNumber'],
-                'tien_dat_coc' => $params['deposit'],
-                'ngay_den' => $params['dayTo'],
-                'ngay_di' => $params['dayOut'],
-                'nguoi_tao_phieu' => 1,
-                'ghi_chu' => $params['memo'],
-            ]);
-            $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => 4]);
-            DB::commit();
-        }
-       catch (Exception $exception){
-            DB::rollBack();
-       }
+        $statusBook = $params['customerID'];
+            if($statusBook == 0){
+                $roomInsert = $this->model->create([
+                    'ma_khach_hang' => $params['customerID'],
+                    'ma_phong_dat' => $params['roomId'],
+                    'so_nguoi_di_kem' => $params['attachmentNumber'],
+                    'tien_dat_coc' => $params['deposit'],
+                    'ngay_den' => $params['dayTo'],
+                    'ngay_di' => $params['dayOut'],
+                    'nguoi_tao_phieu' => 1,
+                    'ghi_chu' => $params['memo'],
+                ]);
+                $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => 4]);
+            }
+
     }
 
     public function getCustomerById($id)

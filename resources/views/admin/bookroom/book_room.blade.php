@@ -202,7 +202,7 @@
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'room_ready')">Phòng sẵn sàng</button>
             <button class="tablinks" onclick="openCity(event, 'room_using')">Phòng đang sử dụng</button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Phòng chờ xác nhận</button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Chờ nhận phòng</button>
         </div>
 
         <div id="room_ready" class="tabcontent">

@@ -1,8 +1,4 @@
-// $(document).ready(function () {
-//     $(document).on('click','#btn_book_room',function (e){
-//        console.log('okela');
-//     });
-// });
+
 
 function addModalBookRoom(id, nameroom, priceroom) {
     $('#idRoom').val(id);
@@ -12,6 +8,7 @@ function addModalBookRoom(id, nameroom, priceroom) {
 
 function submitAddBookRoom() {
     var roomId = $('#idRoom').val();
+    var statusBook = $('#status_book').val();
     var roomName = $('#name_room').val();
     var roomPrice = $('#price_room').val();
     var customerID = $('#id_customer').val();
@@ -34,6 +31,7 @@ function submitAddBookRoom() {
             'dayTo': dayTo,
             'dayOut': dayOut,
             'memo': memo,
+            'statusBook': statusBook,
         },
         url: '/admin/bookroom/addRoomPass',
         dataType: 'json',

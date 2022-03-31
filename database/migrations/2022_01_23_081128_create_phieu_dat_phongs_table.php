@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePhieuDatPhongsTable extends Migration
@@ -10,7 +12,9 @@ class CreatePhieuDatPhongsTable extends Migration
      * Run the migrations.
      *
      * @return void
+     *
      */
+    use Notifiable,SoftDeletes;
     public function up()
     {
         Schema::create('phieu_dat_phongs', function (Blueprint $table) {
@@ -23,6 +27,7 @@ class CreatePhieuDatPhongsTable extends Migration
             $table->dateTime('ngay_di');
             $table->string('nguoi_tao_phieu');;
             $table->string('ghi_chu')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
