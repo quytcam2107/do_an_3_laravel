@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Models\Traits\Relation\PhieuDatPhongDatPhongRelation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PhieuDatPhong extends Model
 {
     use HasFactory;
     use PhieuDatPhongDatPhongRelation;
+    use SoftDeletes;
 
     protected $table = 'phieu_dat_phongs';
     protected $primaryKey = 'ma_phieu_dat_phong ';

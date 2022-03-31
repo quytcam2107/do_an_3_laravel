@@ -15,7 +15,7 @@ class CreateHoaDonsTable extends Migration
     {
         Schema::create('hoa_dons', function (Blueprint $table) {
             $table->bigIncrements('ma_hoa_don');
-            $table->bigIncrements('ma_phieu_dat_phong');
+            $table->bigInteger('ma_phieu_dat_phong');
             $table->string('ma_dich_vu')->nullable();
             $table->string('tong_tien')->nullable();
             $table->timestamps();

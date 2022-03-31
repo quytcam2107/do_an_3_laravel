@@ -40,7 +40,7 @@ class BookRoomService
 
     public function insertRoomPass($params)
     {
-        $statusBook = $params['customerID'];
+        $statusBook = $params['statusBook'];
             if($statusBook == 0){
                 $roomInsert = $this->model->create([
                     'ma_khach_hang' => $params['customerID'],

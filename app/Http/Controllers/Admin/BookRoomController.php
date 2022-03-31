@@ -40,4 +40,7 @@ class BookRoomController extends Controller
          return view('admin.bookroom.viewconfirm',compact('data'));
 
     }
+    public function deleteSoft(){
+        PhieuDatPhong::where('ma_phieu_dat_phong',2)->delete();
+    }
 }

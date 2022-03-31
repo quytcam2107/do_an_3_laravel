@@ -14,7 +14,7 @@ class CreatePhieuDatPhongsTable extends Migration
      * @return void
      *
      */
-    use Notifiable,SoftDeletes;
+   
     public function up()
     {
         Schema::create('phieu_dat_phongs', function (Blueprint $table) {

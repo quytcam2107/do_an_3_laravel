@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/addRoomPass', [BookRoomController::class, 'getFormBookRoom']);
             Route::post('/addRoomPass', [BookRoomController::class, 'addRoomPass']);
             Route::get('/viewconfirm/{id}', [BookRoomController::class, 'viewConfirm'])->name('admin.bookroom.viewconfirm');
+            Route::get('/test', [BookRoomController::class, 'deleteSoft']);
         });
         Route::group(['prefix' => 'room'], function () {
             Route::get('/', [RoomController::class, 'showRoom'])->name('admin.room.index');
