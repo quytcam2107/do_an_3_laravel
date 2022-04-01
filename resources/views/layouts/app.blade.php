@@ -197,6 +197,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.bookroom.index')}}">
+                        <span class="menu-title">Đặt phòng</span>
+                        <i class="mdi mdi-contacts menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.checkout')}}">
+                        <span class="menu-title">Trả Phòng</span>
+                        <i class="mdi mdi-table-large menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link enable" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
                         <span class="menu-title">Quản lý Nhân viên</span>
@@ -231,18 +243,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.bookroom.index')}}">
-                        <span class="menu-title">Đặt phòng</span>
-                        <i class="mdi mdi-contacts menu-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.checkout')}}">
-                        <span class="menu-title">Trả Phòng</span>
-                        <i class="mdi mdi-table-large menu-icon"></i>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="pages/forms/basic_elements.html">
                         <span class="menu-title">Danh sách hóa đơn</span>

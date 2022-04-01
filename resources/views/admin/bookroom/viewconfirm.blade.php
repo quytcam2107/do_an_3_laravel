@@ -211,6 +211,8 @@
                 <p>Tên phòng : {{ $key->datphong['ten_phong']}}</p>
                 <p>Giá Phòng : {{ $key->datphong['gia_phong']}}</p>
                 <p>Tiền đặt cọc : {{ $key->tien_dat_coc}}</p>
+                <p>Dự kiến trả phòng : {{ $key->date_book}}</p>
+                <p>Thời gian thuê : {{ $key->count_day }}</p>
                 <button>Xác nhận đặt phòng</button>
             </div>
             @endforeach

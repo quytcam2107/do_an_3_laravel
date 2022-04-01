@@ -47,3 +47,5 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+//test
+Route::get('/test', [LoginController::class, 'test']);

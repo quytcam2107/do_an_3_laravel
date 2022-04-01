@@ -4,21 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HoaDon extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $table = 'hoa_dons';
-    // protected $primaryKey = "ma_nhan_vien";
+    protected $primaryKey = "ma_hoa_don";
 
-    // protected $fillable = [
-    //     'ma_nhan_vien',
-    //     'ten_nhan_vien',
-    //     'gioi_tinh',
-    //     'ngay_sinh',
-    //     'so_dien_thoai',
-    // ];
-    // protected $hidden = [
-    //     '',
-    // ];
+    protected $fillable = [
+        'ma_hoa_don',
+        'ma_phieu_dat_phong',
+        'ma_dich_vu',
+        'tong_tien',
+    ];
+    protected $hidden = [
+        '',
+    ];
 }

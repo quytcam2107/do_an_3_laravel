@@ -192,17 +192,25 @@
             background: #9ca3af;
             border-radius: 5px;
         }
+        .tablinks{
+            position: relative;
+        }
+        .badge{
+            background: red;
+            position: absolute;
+            top: 0;
+            right: 2px;
+        }
     </style>
 @endsection
 
 @section('main-content')
     <div class="row">
         <h2>Đặt phòng</h2>
-        <p class="pp">Số lượng phòng trống :{{count($rooms_ready)}} </p>
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'room_ready')">Phòng sẵn sàng</button>
-            <button class="tablinks" onclick="openCity(event, 'room_using')">Phòng đang sử dụng</button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Chờ nhận phòng</button>
+            <button class="tablinks" onclick="openCity(event, 'room_ready')" id="defaultOpen">Phòng đang trống  <span class="badge">{{count($rooms_ready)}}</span></button>
+            <button class="tablinks" onclick="openCity(event, 'room_using')">Phòng đang sử dụng <span class="badge">{{count($rooms_using)}}</span></button>
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Chờ nhận phòng <span class="badge">{{count($rooms_odered)}}</span></button>
         </div>
 
         <div id="room_ready" class="tabcontent">
@@ -263,6 +271,7 @@
             @endif
         </div>
         <div id="Tokyo" class="tabcontent">
+
             <h3>Phòng đang được đặt</h3>
             @if(strlen($rooms_odered) < 3 )
                 <h3>Không có phòng nào đang sử dụng</h3>
@@ -316,6 +325,9 @@
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
     </script>
 @endsection
 

@@ -52,8 +52,22 @@ class BookRoomService
                     'nguoi_tao_phieu' => 1,
                     'ghi_chu' => $params['memo'],
                 ]);
-                $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => 4]);
+                $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => Phong::ROOM_ODERED]);
             }
+            else{
+                $roomInsert = $this->model->create([
+                    'ma_khach_hang' => $params['customerID'],
+                    'ma_phong_dat' => $params['roomId'],
+                    'so_nguoi_di_kem' => $params['attachmentNumber'],
+                    'tien_dat_coc' => $params['deposit'],
+                    'ngay_den' => $params['dayTo'],
+                    'ngay_di' => $params['dayOut'],
+                    'nguoi_tao_phieu' => 1,
+                    'ghi_chu' => $params['memo'],
+                ]);
+                $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => Phong::ROOM_USING]);
+            }
+
 
     }
 

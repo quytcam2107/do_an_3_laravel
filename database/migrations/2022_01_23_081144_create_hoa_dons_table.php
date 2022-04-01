@@ -19,6 +19,7 @@ class CreateHoaDonsTable extends Migration
             $table->string('ma_dich_vu')->nullable();
             $table->string('tong_tien')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
