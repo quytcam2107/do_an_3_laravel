@@ -213,7 +213,12 @@
                 <p>Tiền đặt cọc : {{ $key->tien_dat_coc}}</p>
                 <p>Dự kiến trả phòng : {{ $key->date_book}}</p>
                 <p>Thời gian thuê : {{ $key->count_day }}</p>
-                <button>Xác nhận đặt phòng</button>
+                <form method="POST" action="{{ route('admin.bookroom.confirm') }}">
+                    @csrf
+                    <input class="d-none" name="id_customer" value="{{ $key->ma_khach_hang}}">
+                    <input class="d-none" name="booking_code" value="{{ $key->ma_phieu_dat_phong}}">
+                     <button type="submit">Xác nhận đặt phòng</button>
+                </form>
             </div>
             @endforeach
         </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BookRoomController;
 use App\Http\Controllers\Admin\CheckoutController;
+use App\Http\Controllers\Common\TestController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,6 +28,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/addRoomPass', [BookRoomController::class, 'getFormBookRoom']);
             Route::post('/addRoomPass', [BookRoomController::class, 'addRoomPass']);
             Route::get('/viewconfirm/{id}', [BookRoomController::class, 'viewConfirm'])->name('admin.bookroom.viewconfirm');
+            Route::post('/confirm', [BookRoomController::class, 'conFirmBookRoom'])->name('admin.bookroom.confirm');
             Route::get('/test', [BookRoomController::class, 'deleteSoft']);
         });
         Route::group(['prefix' => 'room'], function () {
@@ -48,4 +50,4 @@ Route::prefix('admin')->group(function () {
 });
 
 //test
-Route::get('/test', [LoginController::class, 'test']);
+Route::post('/test', [TestController::class, 'test'])->name('test');

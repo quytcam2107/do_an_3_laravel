@@ -38,7 +38,10 @@ class BookRoomController extends Controller
     public function viewConfirm(Request $request){
         $data = $this->bookRoomService->viewConfirm($request->id);
          return view('admin.bookroom.viewconfirm',compact('data'));
-
+    }
+    public function conFirmBookRoom(Request $request){
+        $data = $this->bookRoomService->conFirmBookRoom($request->all());
+        return $data;
     }
     public function deleteSoft(){
         PhieuDatPhong::where('ma_phieu_dat_phong',2)->delete();

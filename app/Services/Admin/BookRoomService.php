@@ -77,11 +77,12 @@ class BookRoomService
         return response()->json(['data' => $customer]);
     }
     public function viewConfirm($id){
-        // $idCustomer = PhieuDatPhong::with('customer')->get();
-
         $room =  PhieuDatPhong::with('datphong','customer')->where('ma_phong_dat',$id)->get();
-        // $customers =  PhieuDatPhong::with('khachhang')->where('ma_khach_hang',$room['ma_khach_hang']);
-        //  $mer = array_merge(array($room),array($customers));
         return $room;
+    }
+    public function conFirmBookRoom($params){
+            $room = $this->roompass;
+            $roomBook = $room->getallbookroom(2)->get();
+           return $roomBook;
     }
 }

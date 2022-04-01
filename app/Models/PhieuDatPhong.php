@@ -7,6 +7,7 @@ use App\Models\Traits\Relation\PhieuDatPhongDatPhongRelation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Traits\Scope\BookRoomScope;
 
 class PhieuDatPhong extends Model
 {
@@ -14,6 +15,7 @@ class PhieuDatPhong extends Model
     use PhieuDatPhongDatPhongRelation;
     use SoftDeletes;
     use BookRoomAttribute;
+    use BookRoomScope;
 
     protected $table = 'phieu_dat_phongs';
     protected $primaryKey = 'ma_phieu_dat_phong ';
