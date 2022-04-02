@@ -217,6 +217,7 @@
                     @csrf
                     <input class="d-none" name="id_customer" value="{{ $key->ma_khach_hang}}">
                     <input class="d-none" name="booking_code" value="{{ $key->ma_phieu_dat_phong}}">
+                    <input class="d-none" name="room_code" value="{{ $key->ma_phong_dat}}">
                      <button type="submit">Xác nhận đặt phòng</button>
                 </form>
             </div>

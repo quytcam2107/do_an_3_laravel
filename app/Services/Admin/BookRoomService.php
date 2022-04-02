@@ -81,8 +81,9 @@ class BookRoomService
         return $room;
     }
     public function conFirmBookRoom($params){
-            $room = $this->roompass;
-            $roomBook = $room->getallbookroom(2)->get();
-           return $roomBook;
+        $rooooom = $this->room->where('ma_phong',$params['room_code'])->update(['tinh_trang_phong' => Phong::ROOM_USING]);
+        // $updateRoom = $this->room->update([
+            return $rooooom;
+        // ]);
     }
 }
