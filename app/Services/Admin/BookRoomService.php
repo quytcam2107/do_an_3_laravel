@@ -81,9 +81,14 @@ class BookRoomService
         return $room;
     }
     public function conFirmBookRoom($params){
-        $rooooom = $this->room->where('ma_phong',$params['room_code'])->update(['tinh_trang_phong' => Phong::ROOM_USING]);
-        // $updateRoom = $this->room->update([
-            return $rooooom;
-        // ]);
+        $room = $this->room->where('ma_phong',$params['room_code'])->update(['tinh_trang_phong' => Phong::ROOM_USING]);
+        return $room;
     }
+    public function inforRoomUsring($params){
+        $infoRoom =  PhieuDatPhong::with('phongs','khachhangs')->where('ma_phong_dat',$params['room_code'])->get();
+        return [
+            'inforRoom' => $infoRoom
+        ];
+    }
+
 }

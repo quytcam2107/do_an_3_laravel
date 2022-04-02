@@ -205,8 +205,15 @@
 @endsection
 
 @section('main-content')
+<div class="card">
+    <div class="card-body">
+        @if (session('msg'))
+        <div class="alert alert-success">
+            {{ session('msg') }}
+        </div>
+    @endif
     <div class="row">
-        <h2>Đặt phòng</h2>
+        <h4>Đặt phòng</h4>
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'room_ready')" id="defaultOpen">Phòng đang trống  <span class="badge">{{count($rooms_ready)}}</span></button>
             <button class="tablinks" onclick="openCity(event, 'room_using')">Phòng đang sử dụng <span class="badge">{{count($rooms_using)}}</span></button>
@@ -214,7 +221,7 @@
         </div>
 
         <div id="room_ready" class="tabcontent">
-            <h3>DS Phòng Trống</h3>
+            <h3 class="card-title">DS Phòng Trống</h3>
             @foreach($rooms_ready as $room)
 {{--                <input type="text" id="name_room" value="" class="d-none">--}}
                 <div class="col-md stretch-card grid-margin">
@@ -243,9 +250,9 @@
         </div>
         <div id="room_using" class="tabcontent">
             @if(strlen($rooms_using) < 3 )
-                <h3>Không có phòng nào đang sử dụng</h3>
+                <h3 class="card-title">Không có phòng nào đang sử dụng</h3>
             @else
-                <h3>Có <span style="color: #0a58ca;">{{count($rooms_using)}}</span> phòng đang được sử dụng</h3>
+                <h3 class="card-title">Có <span style="color: #0a58ca;">{{count($rooms_using)}}</span> phòng đang được sử dụng</h3>
             @endif
             @if(!empty($rooms_using))
                 @foreach($rooms_using as $room)
@@ -261,9 +268,13 @@
                             <br>
                         </span>
                                 <h6 class="card-text">
-                                    Tình Trạng :<br><br> Khách đang sử
+                                    Tình Trạng :<br><br> Khách đang sử dung
                                 </h6>
-                                <a class="btn btn-gradient-primary" href="#">Xem</a>
+                                <form method="POST" action="{{ route('admin.bookroom.infoRoomUsing') }}">
+                                    @csrf
+                                    <input class="d-none" name="room_code" value="{{ $room->ma_phong}}">
+                                     <button type="submit">Xem</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -272,11 +283,11 @@
         </div>
         <div id="Tokyo" class="tabcontent">
 
-            <h3>Phòng đang được đặt</h3>
+            <h3 class="card-title">Phòng đang được đặt</h3>
             @if(strlen($rooms_odered) < 3 )
-                <h3>Không có phòng nào đang sử dụng</h3>
+                <h3 class="card-title">Không có phòng nào đang sử dụng</h3>
             @else
-                <h3>Có <span style="color: #0a58ca;">{{count($rooms_odered)}}</span> phòng đang chờ confirm</h3>
+                <h3 class="card-title">Có <span style="color: #0a58ca;">{{count($rooms_odered)}}</span> phòng đang chờ confirm</h3>
             @endif
             @if(!empty($rooms_odered))
                 @foreach($rooms_odered as $room)
@@ -303,6 +314,8 @@
         </div>
 
     </div>
+</div>
+</div>
     @include('admin.bookroom.modal')
 @endsection
 <script

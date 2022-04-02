@@ -28,6 +28,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/addRoomPass', [BookRoomController::class, 'getFormBookRoom']);
             Route::post('/addRoomPass', [BookRoomController::class, 'addRoomPass']);
             Route::get('/viewconfirm/{id}', [BookRoomController::class, 'viewConfirm'])->name('admin.bookroom.viewconfirm');
+            Route::post('/inforoomusing', [BookRoomController::class, 'inforRoomUsring'])->name('admin.bookroom.infoRoomUsing');
             Route::post('/confirm', [BookRoomController::class, 'conFirmBookRoom'])->name('admin.bookroom.confirm');
             Route::get('/test', [BookRoomController::class, 'deleteSoft']);
         });

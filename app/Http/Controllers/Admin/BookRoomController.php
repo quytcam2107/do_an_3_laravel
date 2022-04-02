@@ -41,7 +41,13 @@ class BookRoomController extends Controller
     }
     public function conFirmBookRoom(Request $request){
         $data = $this->bookRoomService->conFirmBookRoom($request->all());
-        return $data;
+        return redirect()->route('admin.bookroom.index')->with(['msg' => 'Đặt phòng thành công','data' => $data]);;
+    }
+    public function inforRoomUsring(Request $request){
+
+        $data = $this->bookRoomService->inforRoomUsring($request->all());
+
+        return view('admin.bookroom.viewbookroomusing',compact('data'));
     }
     public function deleteSoft(){
         PhieuDatPhong::where('ma_phieu_dat_phong',2)->delete();

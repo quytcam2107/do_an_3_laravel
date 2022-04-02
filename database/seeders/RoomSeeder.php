@@ -29,7 +29,7 @@ class RoomSeeder extends Seeder
                 $room->mo_ta = 'Mô tả test';
                 $room->anh_phong = 'Null';
                 $room->gia_phong = $gia_phong;
-                $room->tinh_trang_phong = rand(0,3);
+                $room->tinh_trang_phong = 1;
                 $room->created_at = 10010 . date('y') . (($rand < 10) ? ('0' . $rand) : $rand);
                 $room->save();
             }

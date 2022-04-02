@@ -20,7 +20,7 @@ class CreatePhieuDatPhongsTable extends Migration
         Schema::create('phieu_dat_phongs', function (Blueprint $table) {
            $table->bigIncrements('ma_phieu_dat_phong');
             $table->bigInteger('ma_khach_hang');
-            $table->bigInteger('ma_phong_dat');
+            $table->bigInteger('ma_phong_dat')->unsigned();
             $table->bigInteger('so_nguoi_di_kem')->nullable();
             $table->float('tien_dat_coc')->nullable();
             $table->timestamp('ngay_den')->useCurrent();
@@ -29,6 +29,9 @@ class CreatePhieuDatPhongsTable extends Migration
             $table->string('ghi_chu')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('ma_phong_dat')->references('ma_phong')->on('phongs')->onDelete('cascade');
+
         });
     }
 
@@ -37,6 +40,7 @@ class CreatePhieuDatPhongsTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('phieu_dat_phongs');

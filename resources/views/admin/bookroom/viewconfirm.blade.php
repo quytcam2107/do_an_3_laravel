@@ -196,24 +196,39 @@
 @endsection
 
 @section('main-content')
-<div class="">
-    <div class="col-lg-12">
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-            {{-- {{dd($data)}} --}}
-            @foreach ($data as $key)
             <div class="card-body">
                 <h4 class="card-title">Thông tin khách hàng</h4>
-                <p>Tên khách hàng : {{ $key->customer['ho_ten_khach']}}</p>
-                <p>Địa chỉ : {{ $key->customer['dia_chi']}}</p>
-                <p>Giới tính: {{ $key->customer['gioi_tinh']}}</p>
-                <p>Địa chỉ : {{ $key->customer['so_cmnd']}}</p>
-                <h4 class="card-title">Thông tin phòng</h4>
-                <p>Tên phòng : {{ $key->datphong['ten_phong']}}</p>
-                <p>Giá Phòng : {{ $key->datphong['gia_phong']}}</p>
-                <p>Tiền đặt cọc : {{ $key->tien_dat_coc}}</p>
-                <p>Dự kiến trả phòng : {{ $key->date_book}}</p>
-                <p>Thời gian thuê : {{ $key->count_day }}</p>
-                <form method="POST" action="{{ route('admin.bookroom.confirm') }}">
+            @foreach ($data as $key)
+            <div class="row">
+                <div class="col-md-4">
+                <p>Tên khách hàng</p>
+                <p>Địa chỉ </p>
+                <p>Giới tính</p>
+                <p>Số CMND</p>
+
+                <p>Tên phòng</p>
+                <p>Giá Phòng</p>
+                {{-- <p>Tiền đặt cọc :</p> --}}
+                <p>Dự kiến trả phòng</p>
+                <p>Thời gian thuê : </p>
+                 </div>
+
+                 <div class="col-md-8 col-lg-8">
+
+                    <p class="font-weight-bold">  {{ $key->customer['ho_ten_khach'] }}</p>
+                    <p class="font-weight-bold">  {{ $key->customer['dia_chi'] }} </p>
+                    <p class="font-weight-bold">  {{ $key->customer['gioi_tinh']}} </p>
+                    <p class="font-weight-bold">   {{ $key->customer['so_cmnd']}} </p>
+                    <p class="font-weight-bold">   {{ $key->datphong['ten_phong']}} </p>
+                    <p class="font-weight-bold">   {{ $key->datphong['gia_phong']}} </p>
+                    {{-- <p class="font-weight-bold">   {{ $key->tien_dat_coc}} </p> --}}
+                    <p class="font-weight-bold">   {{ $key->date_book}} </p>
+                    <p class="font-weight-bold">   {{ $key->count_day }} </p>
+                 </div>
+                 <form method="POST" action="{{ route('admin.bookroom.confirm') }}">
                     @csrf
                     <input class="d-none" name="id_customer" value="{{ $key->ma_khach_hang}}">
                     <input class="d-none" name="booking_code" value="{{ $key->ma_phieu_dat_phong}}">
@@ -222,6 +237,7 @@
                 </form>
             </div>
             @endforeach
+        </div>
         </div>
     </div>
 </div>

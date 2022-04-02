@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Relation\PhongRelation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Phong extends Model
 {
     use HasFactory;
+    use PhongRelation;
 
     public const ROOM_MAINTENANCE = 0;
     public const ROOM_READY = 1;
