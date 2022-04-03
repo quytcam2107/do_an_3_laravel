@@ -46,7 +46,7 @@ class BookRoomController extends Controller
     public function inforRoomUsring(Request $request){
 
         $data = $this->bookRoomService->inforRoomUsring($request->all());
-
+        // dd($data);
         return view('admin.bookroom.viewbookroomusing',compact('data'));
     }
     public function deleteSoft(){

@@ -67,7 +67,7 @@
                        aria-expanded="false">
                         <div class="nav-profile-img">
                             <img
-                                src="https://s.memehay.com/files/posts/20210515/toan-bo-loi-ran-day-cua-huan-hoa-hong-huan-rose.jpg"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjocfAiPmkzqDQu_tmtXKQPauoSBwQIwT1iDtMsAPA2SPucnhwVz-k9-rplQqmWDUI5uA&usqp=CAU"
                                 alt="image">
                             <span class="availability-status online"></span>
                         </div>
@@ -167,7 +167,7 @@
                     <a href="#" class="nav-link">
                         <div class="nav-profile-image">
                             <img
-                                src="https://s.memehay.com/files/posts/20210515/toan-bo-loi-ran-day-cua-huan-hoa-hong-huan-rose.jpg"
+                                src="https://www.pngitem.com/pimgs/m/516-5167304_transparent-background-white-user-icon-png-png-download.png"
                                 alt="profile">
                             <span class="login-status online"></span>
                             <!--change to offline or busy as needed-->

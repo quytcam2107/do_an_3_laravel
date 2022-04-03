@@ -16,9 +16,10 @@ class CreateDichVusTable extends Migration
         Schema::create('dich_vus', function (Blueprint $table) {
             $table->bigIncrements('ma_dich_vu');
             $table->string('ten_dich_vu');
-            $table->float('gia_dich_vu');
+            $table->bigInteger('gia_dich_vu');
             $table->string('mo_ta');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -248,7 +248,7 @@
     </div>
     {{-- edit employee modal end --}}
 
-    <div class="container">
+    <div class="">
         <div class="row my-5">
             <div class="col-lg-12">
                 <div class="card shadow">
@@ -316,7 +316,7 @@
                 }
             });
         });
-        
+
     </script>
 @endsection
 @section('js')

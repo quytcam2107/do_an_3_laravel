@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 
 use App\Models\KhachHang;
 use App\Models\PhieuDatPhong;
+use App\Models\PhieuDichVu;
 use App\Models\Phong;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
@@ -86,8 +87,13 @@ class BookRoomService
     }
     public function inforRoomUsring($params){
         $infoRoom =  PhieuDatPhong::with('phongs','khachhangs')->where('ma_phong_dat',$params['room_code'])->get();
+        $roomPassId = $infoRoom[0]['ma_phieu_dat_phong'];
+        $usingService =  PhieuDichVu::with('dichvus','maphieudichvu')->where('ma_phieu_dat_phong',$roomPassId)->get();
+
+
         return [
-            'inforRoom' => $infoRoom
+            'inforRoom' => $infoRoom,
+            'usingsServices' => $usingService
         ];
     }
 

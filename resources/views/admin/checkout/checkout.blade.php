@@ -11,23 +11,18 @@
 @section('main-content')
 
     <div class="row">
-        <div class="col-12 grid-margin">
-            <div class="card">
+        <div class="col-md-2 stretch-card grid-margin">
+            <div class="card bg-gradient-danger card-img-holder text-white">
                 <div class="card-body">
-                    <div class="tab">
-                        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Danh sách phòng
-                            đang
-                            thuê
-                        </button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-                    </div>
+
                 </div>
                 @include('tpl.admin.rentandcheckout.tab_rentandcheckout')
             </div>
         </div>
 
+
     </div>
+
 
 @endsection
 @section('js')

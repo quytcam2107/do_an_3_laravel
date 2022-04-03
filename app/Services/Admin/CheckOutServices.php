@@ -4,7 +4,7 @@ namespace App\Services\Admin;
 
 use App\Models\Phong;
 
-class Checkout
+class CheckOutServices
 {
     protected $room;
 
@@ -13,11 +13,13 @@ class Checkout
         $this->room = $room;
     }
 
-    public function getListCheckout()
+    public function CheckOutServices()
     {
         $room_odereds = $this->room->Statusready()->get();
+        $room_using = $this->room->Statususing()->get();
         return [
             'room_odereds' => $room_odereds,
+            'room_using' => $room_using,
         ];
     }
 }

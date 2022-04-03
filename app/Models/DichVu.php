@@ -11,6 +11,7 @@ class DichVu extends Model
     use HasFactory;
 
     use SoftDeletes;
+
     protected $table = 'dich_vus';
     protected $primaryKey = "ma_dich_vu";
 

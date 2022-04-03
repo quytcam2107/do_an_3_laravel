@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Common\LoginController;
 use App\Http\Controllers\Admin\RoomController;
@@ -46,6 +47,9 @@ Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'checkout'], function () {
             Route::get('/', [CheckoutController::class, 'checkOut'])->name('admin.checkout');
             Route::get('/getCustomer/{id}', [CheckoutController::class, 'getRoomById']);
+        });
+        Route::group(['prefix' => 'bill'], function () {
+            Route::get('/', [BillController::class, 'getBill'])->name('admin.bill.getBill');
         });
     });
 });

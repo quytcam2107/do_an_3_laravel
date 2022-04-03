@@ -37,4 +37,9 @@ class Phong extends Model
         $query = Phong::where('tinh_trang_phong', '=', Phong::ROOM_READY);
         return $query;
     }
+    public function scopeStatususing()
+    {
+        $query = Phong::where('tinh_trang_phong', '=', Phong::ROOM_USING);
+        return $query;
+    }
 }

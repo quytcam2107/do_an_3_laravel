@@ -24,25 +24,25 @@
                     {{-- {{ dd($data['inforRoom']) }} --}}
                     @foreach ($data['inforRoom'][0]['khachhangs'] as $key)
 
-                    <h4 class="card-title">Thông tin người sử dụng </h4>
+                    <h4 class="card-title"><i class="mdi mdi-account-check mr-2"></i>Thông tin người sử dụng </h4>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Khách hàng</p></div>
+                        <div class="col-md-6"><p>Khách hàng</p></div>
                         <div class="col-md-6">{{ $key->ho_ten_khach }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Địa chỉ</p></div>
+                        <div class="col-md-6"><p>Địa chỉ</p></div>
                         <div class="col-md-6">{{ $key->dia_chi }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Giới tính</p></div>
+                        <div class="col-md-6"><pGiới tính</p></div>
                         <div class="col-md-6">{{ $key->gioi_tinh == 1 ? "Nam" : "Nữ" }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Số điện thoại</p></div>
+                        <div class="col-md-6"><p>Số điện thoại</p></div>
                         <div class="col-md-6">{{ "0".$key->so_dien_thoai }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Số CMND</p></div>
+                        <div class="col-md-6"><p>Số CMND</p></div>
                         <div class="col-md-6">{{ "0".$key->so_cmnd }}</div>
                     </div>
                     <div class="btn-center">
@@ -57,21 +57,21 @@
             <div class="card">
                 <div class="card-body card-pd-0">
                     @foreach ($data['inforRoom'] as $key)
-                    <h4 class="card-title">Thông tin sử dụng</h4>
+                    <h4 class="card-title"><i class="mdi mdi-home-map-marker mr-2"></i>Thông tin phòng sử dụng</h4>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Thời gian nhận phòng</p></div>
+                        <div class="col-md-6"><p>Thời gian nhận phòng</p></div>
                         <div class="col-md-6">{{ $key->ngay_den }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Ngày trả phòng</p></div>
+                        <div class="col-md-6"><p>Ngày trả phòng</p></div>
                         <div class="col-md-6">{{ $key->ngay_di }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Tiền đặt cọc</p></div>
+                        <div class="col-md-6"><p>Tiền đặt cọc</p></div>
                         <div class="col-md-6">{{ $key->tien_dat_coc }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><p><i class="mdi mdi-account mr-2"></i>Đã sử dụng được</p></div>
+                        <div class="col-md-6"><p>Đã sử dụng được</p></div>
                         <div class="col-md-6">{{ $key->count_house }}</div>
                     </div>
                     @endforeach
@@ -81,14 +81,31 @@
         </div>
         <div class="col-md-5 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
-                    @foreach ($data['inforRoom'] as $key)
-                    <h4 class="card-title">Sử dụng</h4>
+                <div class="card-body card-pd-0">
+                    <h4 class="card-title"><i class="mdi mdi-view-agenda mr-2"></i>Dịch vụ sử dụng</h4>
+                    {{-- {{ dd($data['usingsServices']) }} --}}
                     <div class="row">
-                        <div></div>
+                        <div class="col-md-6">Tên dịch vụ</div>
+                        <div class="col-md-6">Số lượng</div>
                     </div>
-                    @endforeach
+                    @if (count($data['usingsServices']) < 1)
+                       <code>Không có dịch vụ nào được sử dụng</code>
+                    @endif
 
+                        @foreach ($data['usingsServices'] as $key)
+                        <div class="row mt-2">
+
+                                @foreach ($key->dichvus as $k)
+                                    <div class="col-md-6"><p class="card-description"> {{ $k->ten_dich_vu }}</p></div>
+                                    <div class="col-md-6"><p> {{ $key->so_luong }}</p></div>
+                                @endforeach
+                        </div>
+                        @endforeach
+                    <form>
+                        <div class="btn-center">
+                            <a href="" class="btn btn-info btn-rounded btn-fw">Thêm dịch vụ cho phòng này</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
