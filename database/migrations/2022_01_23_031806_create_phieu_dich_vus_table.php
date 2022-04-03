@@ -14,15 +14,12 @@ class CreatePhieuDichVusTable extends Migration
     public function up()
     {
         Schema::create('phieu_dich_vus', function (Blueprint $table) {
+            $table->increments('ma_phieu_dich_vu');
             $table->unsignedBigInteger('ma_dich_vu');
-            $table->unsignedBigInteger('ma_khach_hang');
-            $table->unsignedBigInteger('ma_phong');
-            $table->integer('so_luong');
-//            $table->primary(['ma_dich_vu','ma_khach_hang']);
-//            $table->foreign('ma_dich_vu')->references('ma_dich_vu')->on('dich_vus')->onDelete('cascade');
-//            $table->foreign('ma_khach_hang')->references('ma_khach_hang')->on('khach_hangs')->onDelete('cascade');
-//            $table->foreign('ma_phong')->references('ma_phong')->on('phongs')->onDelete('cascade');
+            $table->unsignedBigInteger('ma_phieu_dat_phong');
+            $table->integer('so_luong')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

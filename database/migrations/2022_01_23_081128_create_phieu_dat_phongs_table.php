@@ -29,9 +29,7 @@ class CreatePhieuDatPhongsTable extends Migration
             $table->string('ghi_chu')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
             $table->foreign('ma_phong_dat')->references('ma_phong')->on('phongs')->onDelete('cascade');
-
         });
     }
 
