@@ -12,15 +12,18 @@
 
     <div class="row">
         <div class="col-md-2 stretch-card grid-margin">
+            @foreach ($data['room_using'] as $key)
             <div class="card bg-gradient-danger card-img-holder text-white">
                 <div class="card-body">
 
                 </div>
-                @include('tpl.admin.rentandcheckout.tab_rentandcheckout')
+
             </div>
+            @endforeach
+
         </div>
 
-
+        @include('tpl.admin.rentandcheckout.tab_rentandcheckout')
     </div>
 
 
