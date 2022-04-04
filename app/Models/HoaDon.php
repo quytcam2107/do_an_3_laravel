@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Relation\HoaDonRelation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,8 @@ class HoaDon extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HoaDonRelation;
+
     protected $table = 'hoa_dons';
     protected $primaryKey = "ma_hoa_don";
 

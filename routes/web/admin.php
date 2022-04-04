@@ -49,7 +49,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/getCustomer/{id}', [CheckoutController::class, 'getRoomById']);
         });
         Route::group(['prefix' => 'bill'], function () {
-            Route::get('/', [BillController::class, 'getBill'])->name('admin.bill.getBill');
+            Route::POST('/', [BillController::class, 'createBill'])->name('admin.bill.getBill');
         });
     });
 });
