@@ -10,13 +10,39 @@
     .btn-center{
         display: flex;
     }
+    ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: white;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
 </style>
 @endsection
 
 @section('main-content')
+<ul class="breadcrumb">
+    <li><a href="{{ route('admin.bookroom.index') }}">Đặt phòng</a></li>
+    <li>Xem thông tin và đặt phòng</li>
+  </ul>
 <div class="card">
     <div class="card-body">
-        <h1 class="text-center">Name</h1>
+        <h1 class="text-center alertt">Name</h1>
     <div class="row">
         <div class="col-md-3 grid-margin stretch-card">
             <div class="card">
@@ -135,7 +161,7 @@
         @csrf
         <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $key->ma_phieu_dat_phong}}">
 
-        <button id="book" class="btn btn-outline-dark btn-fwo" onclick="getmodal()" data-toggle="modal" data-target="#exampleModal">Tạo hóa đơn</button>
+        <button id="book" class="btn btn-outline-dark btn-fwo" data-toggle="modal" data-target="#exampleModal">Tạo hóa đơn</button>
     {{-- </form> --}}
     @endforeach
     </div>
@@ -146,12 +172,35 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
 
         $('#openModal').click(function (e) {
             var book_room_id = $('#book_room_id').val();
-            alert(book_room_id);
+            var route = "/createBill";
+            let alert = "Tạo hóa đơn thành công" + "<br>" + "Kiểm tra hóa đơn  :#";
+            $.ajax({
+                type: "post",
+                url:"{{ route('admin.bill.createBill') }}",
+                data: {
+                    book_room_id : book_room_id
+                },
+                dataType: "json",
+                success: function (response) {
+                    console.log(response.bill.ma_hoa_don);
+                    $("#cl_hide").click();
+                    $(".grid-margin").remove();
+                    $("#book").remove();
+                    let link = alert + "<a href=''>"+ response.bill.ma_hoa_don +"</a>"
+                    $(".alertt").html(link);
+                }
+            });
         });
     });
 </script>
