@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\DichVu;
 use App\Models\KhachHang;
 use App\Models\PhieuDatPhong;
 use App\Models\PhieuDichVu;
@@ -18,11 +19,14 @@ class BookRoomService
 
     protected $rooms;
 
-    public function __construct(PhieuDatPhong $roompass, Phong $rooms, KhachHang $customer)
+    protected $services;
+
+    public function __construct(PhieuDatPhong $roompass, Phong $rooms, KhachHang $customer,DichVu $services)
     {
         $this->model = $roompass;
         $this->room = $rooms;
         $this->customer = $customer;
+        $this->services = $services;
     }
 
     public function index()
@@ -89,10 +93,11 @@ class BookRoomService
         $infoRoom =  PhieuDatPhong::with('phongs','khachhangs')->where('ma_phong_dat',$params['room_code'])->get();
         $roomPassId = $infoRoom[0]['ma_phieu_dat_phong'];
         $usingService =  PhieuDichVu::with('dichvus','maphieudichvu')->where('ma_phieu_dat_phong',$roomPassId)->get();
-
+        $services = $this->services->get();
         return [
             'inforRoom' => $infoRoom,
-            'usingsServices' => $usingService
+            'usingsServices' => $usingService,
+            'services' => $services
         ];
     }
 

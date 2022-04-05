@@ -130,7 +130,7 @@ ul.breadcrumb li a:hover {
                         @endforeach
                     <form>
                         <div class="btn-center">
-                            <a href="" class="btn btn-info btn-rounded btn-fw">Thêm dịch vụ cho phòng này</a>
+                            <a  data-toggle="modal" data-target="#servicemodal" class="btn btn-info btn-rounded btn-fw">Thêm dịch vụ cho phòng này</a>
                         </div>
                     </form>
                 </div>
@@ -157,12 +157,47 @@ ul.breadcrumb li a:hover {
           </div>
         </div>
       </div>
-    <form method="POST" action="{{ route('admin.bill.createBill') }}">
+
+      <div class="modal fade bd-example-modal-lg" id="servicemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                        @foreach ($data['services'] as $key)
+
+                            <div class="col-md-6">
+                                <div class=""> {{ $key->ten_dich_vu }}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <button id="subQuanti">-</button>
+                                <span><input type="number" id="number_services"></span>
+                                <button id="plusQuanti">+</button>
+                            </div>
+
+                        @endforeach
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="cl_hide" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+              {{-- <button id="openModal" type="button" class="btn btn-primary">Đồng ý</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{-- <form method="POST" action="{{ route('admin.bill.createBill') }}"> --}}
         @csrf
         <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $key->ma_phieu_dat_phong}}">
 
         <button id="book" class="btn btn-outline-dark btn-fwo" data-toggle="modal" data-target="#exampleModal">Tạo hóa đơn</button>
-    </form>
+    {{-- </form> --}}
     @endforeach
     </div>
 </div>
@@ -173,6 +208,7 @@ ul.breadcrumb li a:hover {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $.ajaxSetup({
@@ -201,6 +237,13 @@ ul.breadcrumb li a:hover {
                     $(".alertt").html(link);
                 }
             });
+        });
+        var click = 0;
+        $("#subQuanti").click(function (e) {
+
+            let quantity = $("#number_services").val();
+                click++;
+            $('.number_services').html(clicks);
         });
     });
 </script>

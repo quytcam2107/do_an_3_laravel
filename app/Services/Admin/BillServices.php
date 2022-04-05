@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\DichVu;
 use App\Models\HoaDon;
 use App\Models\PhieuDatPhong;
 use App\Models\PhieuDichVu;
@@ -13,18 +14,20 @@ class BillServices{
     protected $roompass;
     protected $rooms;
     protected $billServices;
-    public function __construct(HoaDon $bill,PhieuDatPhong $roompass,PhieuDichVu $billServices,Phong $rooms)
+    protected $services;
+
+    public function __construct(HoaDon $bill,PhieuDatPhong $roompass,PhieuDichVu $billServices,Phong $rooms,DichVu $services)
     {
         $this->bill = $bill;
         $this->roompass = $roompass;
         $this->room = $rooms;
         $this->billServices = $billServices;
+        $this->services = $services;
     }
     public function createBill($params){
        $roomBill =  $this->roompass->where('ma_phong_dat',$params['book_room_id'])->get();
        $idRoom = $roomBill[0]['ma_phong_dat'];
        $updateStatusRoom = $this->room->find($idRoom)->update(['tinh_trang_phong' => 2]);
-       dd($updateStatusRoom);
        $serviceUse = $this->billServices->where('ma_phieu_dat_phong',$params['book_room_id'])->get();
         $bill = $this->bill->create([
             'ma_phieu_dat_phong' => $params['book_room_id'],
