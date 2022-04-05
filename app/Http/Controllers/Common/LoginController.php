@@ -50,18 +50,29 @@ class LoginController extends Controller
                 $user2 =
                     DB::table('tai_khoans')
                     ->join('nhan_viens', 'nhan_viens.ma_nhan_vien', '=', 'tai_khoans.ma_tai_khoan')
-                    ->join('chuc_vus', 'chuc_vus.ma_chuc_vu', '=', 'tai_khoans.ma_tai_khoan')
+                    ->join('chuc_vus', 'chuc_vus.ma_chuc_vu', '=', 'tai_khoans.ma_chuc_vu')
                     ->where('tai_khoans.ma_tai_khoan', '=', $user->ma_tai_khoan)
                     ->select('tai_khoans.*', 'nhan_viens.ten_nhan_vien', 'chuc_vus.ten_chuc_vu')
                     ->get();
+
                 foreach ($user2 as $users) {
                      $ten_cv =  $users->ten_chuc_vu;
                      $ten_nv =  $users->ten_nhan_vien;
                 }
-                $request->session()->put('loginId', $user->ma_tai_khoan);
-                $request->session()->put('loginName', $users->ten_nhan_vien);
-                $request->session()->put('loginRole', $users->ten_chuc_vu);
-                return redirect('/admin/');
+                if($users->ma_chuc_vu == 1){
+                    return redirect('/admin/');
+                    $request->session()->put('loginId', $user->ma_tai_khoan);
+                    $request->session()->put('loginName', $users->ten_nhan_vien);
+                    $request->session()->put('loginRole', $users->ten_chuc_vu);
+                }
+                if($users->ma_chuc_vu == 2){
+                    return "code tiep";
+                    $request->session()->put('loginId', $user->ma_tai_khoan);
+                    $request->session()->put('loginName', $users->ten_nhan_vien);
+                    $request->session()->put('loginRole', $users->ten_chuc_vu);
+                }
+
+
             } else {
                 return back()->with('fail_password', 'Lỗi đăng nhập ! Sai mật khẩu hoặc tài khoản bạn chưa được kích hoạt');
             }

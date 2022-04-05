@@ -157,12 +157,12 @@ ul.breadcrumb li a:hover {
           </div>
         </div>
       </div>
-    {{-- <form method="POST" action="{{ route('admin.bill.getBill') }}"> --}}
+    <form method="POST" action="{{ route('admin.bill.createBill') }}">
         @csrf
         <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $key->ma_phieu_dat_phong}}">
 
         <button id="book" class="btn btn-outline-dark btn-fwo" data-toggle="modal" data-target="#exampleModal">Tạo hóa đơn</button>
-    {{-- </form> --}}
+    </form>
     @endforeach
     </div>
 </div>

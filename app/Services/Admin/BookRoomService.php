@@ -90,7 +90,6 @@ class BookRoomService
         $roomPassId = $infoRoom[0]['ma_phieu_dat_phong'];
         $usingService =  PhieuDichVu::with('dichvus','maphieudichvu')->where('ma_phieu_dat_phong',$roomPassId)->get();
 
-
         return [
             'inforRoom' => $infoRoom,
             'usingsServices' => $usingService

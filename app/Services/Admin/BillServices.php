@@ -22,7 +22,9 @@ class BillServices{
     }
     public function createBill($params){
        $roomBill =  $this->roompass->where('ma_phong_dat',$params['book_room_id'])->get();
-        $updateStatusRoom = $this->room->update(['tinh_trang_phong' => Phong::ROOM_CLEANING]);
+       $idRoom = $roomBill[0]['ma_phong_dat'];
+       $updateStatusRoom = $this->room->find($idRoom)->update(['tinh_trang_phong' => 2]);
+       dd($updateStatusRoom);
        $serviceUse = $this->billServices->where('ma_phieu_dat_phong',$params['book_room_id'])->get();
         $bill = $this->bill->create([
             'ma_phieu_dat_phong' => $params['book_room_id'],
