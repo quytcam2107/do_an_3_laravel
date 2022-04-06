@@ -42,6 +42,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Đăng nhập</title>
+    <style>
+        img{
+            display: block; 
+			margin-left: auto; 
+			margin-right: auto;
+        }
+    </style>
     <!-- plugins:css -->
     <!-- endinject -->
     <!-- Plugin css for this page -->
