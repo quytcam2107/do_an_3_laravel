@@ -169,14 +169,13 @@ ul.breadcrumb li a:hover {
                     <div class="card-body">
                         <div class="row">
                         @foreach ($data['services'] as $key)
-
                             <div class="col-md-6">
                                 <div class=""> {{ $key->ten_dich_vu }}</div>
                             </div>
                             <div class="col-md-6">
-                                <button id="subQuanti">-</button>
-                                <span><input type="number" id="number_services"></span>
-                                <button id="plusQuanti">+</button>
+                                <button  id="subQuanti">-</button>
+                                <span><input type="number"  id="number_services" value="0"></span>
+                                <button class="btn-update-quantity" data-id="{{ $key->ma_dich_vu }}" data-type="incre" id="plusQuanti">+</button>
                             </div>
 
                         @endforeach
@@ -238,13 +237,17 @@ ul.breadcrumb li a:hover {
                 }
             });
         });
-        var click = 0;
-        $("#subQuanti").click(function (e) {
 
-            let quantity = $("#number_services").val();
-                click++;
-            $('.number_services').html(clicks);
-        });
+            $('.btn-update-quantity').on('click', function() {
+               let id = $(this).attr('data-id');
+                alert(id);
+            })
+
+            // $('#subQuanti').on('click', function() {
+            //     let id = $(this).attr('data-id');
+            //     alert(id);
+            // })
+
     });
 </script>
 @endsection
