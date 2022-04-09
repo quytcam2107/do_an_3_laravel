@@ -32,6 +32,12 @@ ul.breadcrumb li a:hover {
   color: #01447e;
   text-decoration: underline;
 }
+.pt-5{
+    padding: 0px !important;
+}
+.mt-3{
+    margin: 0px !important;
+}
 </style>
 @endsection
 
@@ -48,7 +54,7 @@ ul.breadcrumb li a:hover {
             <div class="card">
                 <div class="card-body card-pd-0">
 
-                    {{-- {{ dd($data['inforRoom']) }} --}}
+                    {{-- {{ dd($data['inforRoom'][0]->ma_phieu_dat_phong) }} --}}
                     @foreach ($data['inforRoom'][0]['khachhangs'] as $key)
 
                     <h4 class="card-title"><i class="mdi mdi-account-check mr-2"></i>Thông tin người sử dụng </h4>
@@ -162,10 +168,13 @@ ul.breadcrumb li a:hover {
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-
+                Thêm dịch vụ
             </div>
             <div class="modal-body">
                 <div class="card">
+                    <div class="d-none" id="card-service">
+
+                    </div>
                     <div class="card-body">
                         <div class="row">
                         @foreach ($data['services'] as $key)
@@ -173,9 +182,9 @@ ul.breadcrumb li a:hover {
                                 <div class=""> {{ $key->ten_dich_vu }}</div>
                             </div>
                             <div class="col-md-6">
-                                <button  id="subQuanti">-</button>
-                                <span><input type="number"  id="number_services" value="0"></span>
-                                <button class="btn-update-quantity" data-id="{{ $key->ma_dich_vu }}" data-type="incre" id="plusQuanti">+</button>
+                                {{-- <button  id="subQuanti">-</button> --}}
+                                <span><input class="d-none" type="number"  id="number_services" value="0"></span>
+                                <button class="btn-update-quantity btn btn-social-icon btn-linkedin btn-rounded" data-id="{{ $key->ma_dich_vu }}" data-id-service="{{ $data['inforRoom'][0]->ma_phieu_dat_phong }}" data-type="incre" id="plusQuanti">+</button>
                             </div>
 
                         @endforeach
@@ -185,7 +194,7 @@ ul.breadcrumb li a:hover {
 
             </div>
             <div class="modal-footer">
-              <button type="button" id="cl_hide" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+              <button type="button" id="close_reload" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
               {{-- <button id="openModal" type="button" class="btn btn-primary">Đồng ý</button> --}}
             </div>
           </div>
@@ -199,6 +208,7 @@ ul.breadcrumb li a:hover {
     {{-- </form> --}}
     @endforeach
     </div>
+
 </div>
 @endsection
 
@@ -240,8 +250,30 @@ ul.breadcrumb li a:hover {
 
             $('.btn-update-quantity').on('click', function() {
                let id = $(this).attr('data-id');
-                alert(id);
+               let data_id_service = $(this).attr('data-id-service');
+               let quantity = 1;
+
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('admin.bookroom.inserservice') }}",
+                    data: {
+                        quantity :quantity,
+                        id_service : id,
+                        data_id_service : data_id_service
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response.ten_dich_vu);
+                        $text = 'Đã thêm dịch vụ :' + response.ten_dich_vu;
+                        $('#card-service').removeClass('d-none');
+                        $('#card-service').addClass('alert alert-primary');
+                        $('#card-service').html($text);
+                    }
+                });
             })
+            $('#close_reload').click(function (e) {
+                window.location.reload();
+            });
 
             // $('#subQuanti').on('click', function() {
             //     let id = $(this).attr('data-id');

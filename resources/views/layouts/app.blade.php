@@ -30,6 +30,11 @@
         .mt-3{
             margin: 0 !important;
         }
+        .navbar{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
         </style>
     @yield('css')
 </head>
@@ -40,7 +45,7 @@
 
     </div>
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="padding: 0;margin: 0">
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo" href="{{ route('admin.home') }}"><img
                     src="https://www.pngkey.com/png/full/246-2466707_best-western-sunrise-hotel-logo-png-transparent-best.png"

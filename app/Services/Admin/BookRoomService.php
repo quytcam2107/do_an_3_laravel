@@ -21,12 +21,15 @@ class BookRoomService
 
     protected $services;
 
-    public function __construct(PhieuDatPhong $roompass, Phong $rooms, KhachHang $customer,DichVu $services)
+    protected $billServices;
+
+    public function __construct(PhieuDatPhong $roompass, Phong $rooms, KhachHang $customer,DichVu $services,PhieuDichVu $billServices)
     {
         $this->model = $roompass;
         $this->room = $rooms;
         $this->customer = $customer;
         $this->services = $services;
+        $this->billServices = $billServices;
     }
 
     public function index()
@@ -94,11 +97,41 @@ class BookRoomService
         $roomPassId = $infoRoom[0]['ma_phieu_dat_phong'];
         $usingService =  PhieuDichVu::with('dichvus','maphieudichvu')->where('ma_phieu_dat_phong',$roomPassId)->get();
         $services = $this->services->get();
+
         return [
             'inforRoom' => $infoRoom,
             'usingsServices' => $usingService,
             'services' => $services
         ];
+
+    }
+    public function inserServices($params){
+        $roomBill =$this->billServices->where([
+            'ma_dich_vu' => $params['id_service'],
+            'ma_phieu_dat_phong' => $params['data_id_service']
+        ])->get();
+
+        if(count($roomBill) == 0){
+              $roomBills = $this->billServices->create([
+             'ma_dich_vu' => $params['id_service'],
+             'ma_phieu_dat_phong' => $params['data_id_service'],
+         ]);
+        }
+
+        else{
+            $roomBills =$this->billServices->find($roomBill[0]['ma_phieu_dich_vu']);
+            $i = $roomBills['so_luong'] + $params['quantity'];
+                $roomBills->update([
+                    'so_luong' => $i
+                ]);
+
+         }
+         $roomBills =  $this->services->where('ma_dich_vu',$params['id_service'])->first();
+
+
+        // $insertService = $this->services->get();
+        // return $insertService;
+        return $roomBills;
     }
 
 }
