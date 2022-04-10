@@ -62,12 +62,14 @@ class LoginController extends Controller
                 if($users->ma_chuc_vu == 1){
 
                     $request->session()->put('loginId', $user->ma_tai_khoan);
+
                     $request->session()->put('loginName', $users->ten_nhan_vien);
                     $request->session()->put('loginRole', $users->ten_chuc_vu);
                     return redirect('/admin/');
                 }
                 if($users->ma_chuc_vu == 2){
                     $request->session()->put('loginId', $user->ma_tai_khoan);
+                    $request->session()->put('loginIdStaff', $user->ma_nhan_vien);
                     $request->session()->put('loginName', $users->ten_nhan_vien);
                     $request->session()->put('loginRole', $users->ten_chuc_vu);
                     return "code tiep";

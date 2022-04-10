@@ -38,6 +38,9 @@ ul.breadcrumb li a:hover {
 .mt-3{
     margin: 0px !important;
 }
+.alertt{
+    display: grid;
+}
 </style>
 @endsection
 
@@ -48,7 +51,11 @@ ul.breadcrumb li a:hover {
   </ul>
 <div class="card">
     <div class="card-body">
-        <h1 class="text-center alertt">Name</h1>
+        <div class="text-center alertt d-none">
+            <h3>Tạo hóa đơn thành công</h3>
+            <h3>MÃ HÓA ĐƠN </h3>
+
+        </div>
     <div class="row">
         <div class="col-md-3 grid-margin stretch-card">
             <div class="card">
@@ -202,7 +209,7 @@ ul.breadcrumb li a:hover {
       </div>
     {{-- <form method="POST" action="{{ route('admin.bill.createBill') }}"> --}}
         @csrf
-        <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $key->ma_phieu_dat_phong}}">
+        <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $data['inforRoom'][0]->ma_phieu_dat_phong}}">
 
         <button id="book" class="btn btn-outline-dark btn-fwo" data-toggle="modal" data-target="#exampleModal">Tạo hóa đơn</button>
     {{-- </form> --}}
@@ -229,7 +236,7 @@ ul.breadcrumb li a:hover {
         $('#openModal').click(function (e) {
             var book_room_id = $('#book_room_id').val();
             var route = "/createBill";
-            let alert = "Tạo hóa đơn thành công" + "<br>" + "Kiểm tra hóa đơn  :#";
+
             $.ajax({
                 type: "post",
                 url:"{{ route('admin.bill.createBill') }}",
@@ -239,11 +246,12 @@ ul.breadcrumb li a:hover {
                 dataType: "json",
                 success: function (response) {
                     console.log(response.bill.ma_hoa_don);
+                    let link = "<a href="+'getBillById/'+response.bill.ma_hoa_don+">"+'#'+response.bill.ma_hoa_don+"</a>";
                     $("#cl_hide").click();
                     $(".grid-margin").remove();
                     $("#book").remove();
-                    let link = alert + "<a href=''>"+ response.bill.ma_hoa_don +"</a>"
-                    $(".alertt").html(link);
+                    $(".alertt").removeClass('d-none');
+                    $(".alertt").append(link);
                 }
             });
         });

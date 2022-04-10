@@ -10,6 +10,7 @@ use App\Models\Phong;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
 use  App\Models\Traits\Relation\PhieuDatPhongDatPhongRelation;
+use Illuminate\Support\Facades\Session;
 
 class BookRoomService
 {
@@ -57,7 +58,7 @@ class BookRoomService
                     'tien_dat_coc' => $params['deposit'],
                     'ngay_den' => $params['dayTo'],
                     'ngay_di' => $params['dayOut'],
-                    'nguoi_tao_phieu' => 1,
+                    'nguoi_tao_phieu' => Session::get('loginId'),
                     'ghi_chu' => $params['memo'],
                 ]);
                 $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => Phong::ROOM_ODERED]);
@@ -70,7 +71,7 @@ class BookRoomService
                     'tien_dat_coc' => $params['deposit'],
                     'ngay_den' => $params['dayTo'],
                     'ngay_di' => $params['dayOut'],
-                    'nguoi_tao_phieu' => 1,
+                    'nguoi_tao_phieu' => Session::get('loginId'),
                     'ghi_chu' => $params['memo'],
                 ]);
                 $roomUpdateStatus = $this->room->where('ma_phong', $params['roomId'])->update(['tinh_trang_phong' => Phong::ROOM_USING]);

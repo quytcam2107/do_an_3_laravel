@@ -18,6 +18,7 @@ class CreateHoaDonsTable extends Migration
             $table->bigInteger('ma_phieu_dat_phong');
             $table->string('ma_dich_vu')->nullable();
             $table->string('tong_tien')->nullable();
+            $table->string('nguoi_tao')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
