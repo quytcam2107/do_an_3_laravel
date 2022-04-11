@@ -20,6 +20,7 @@
                     <th>Họ tên </th>
                     <th>Tạo lúc </th>
                     <th>Người tạo </th>
+                    <th>Tác vụ</th>
                 </tr>
             </thead>
         </table>
@@ -66,6 +67,7 @@
                 { data: 'ho_ten_khach', name: 'ho_ten_khach' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'ten_nhan_vien', name: 'ten_nhan_vien' },
+                { data: 'action', name: 'action' },
             ],
             "columnDefs":
                 [
@@ -76,9 +78,22 @@
                     {
                         "targets": 1,
                         "render": function ( data, type, row, meta ) {
-                        return '<a href="getBillById/'+data+'">#'+data+'</a>';
+                        return '<a href="bill/getBillById/'+data+'">#'+data+'</a>';
                         }
+                    },
+                    {
+                        "targets": 2,
+                    },
+                    {
+                        "targets": 3,
+                    },
+                    {
+                        "targets": 4,
+                    },
+                    {
+                        "targets": 5,
                     }
+
                 ]
         });
     });
