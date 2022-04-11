@@ -57,18 +57,77 @@
             <h4 class="text-center">----------------------------------------</h4>
             <div class="col">
                 <div class="d-flex flex-wrap">
-                    <div class="p-2 w-10"> Phòng:</div>
-                    <div class="p-2"> {{ $data['infoCustomer']->ho_ten_khach }}</div>
+                    <div class="p-2 w-10"> Phòng :</div>
+
+                    <div class="p-2"> {{ $data['roomInfo'][0]->ten_phong }}</div>
                 </div>
                 <div class="d-flex flex-wrap">
-                    <div class="p-2 w-10"> Địa chỉ :</div>
-                    <div class="p-2"> {{ $data['infoCustomer']->dia_chi }}</div>
+                    <div class="p-2 w-10"> Gía phòng :</div>
+                    <div class="p-2"> {{ $data['roomInfo'][0]->gia_phong}} <small>(VND/Ngày đêm)</small></div>
                 </div>
                 <div class="d-flex flex-wrap">
-                    <div class="p-2"> Giới tính :</div>
-                    <div class="p-2"> {{ $data['infoCustomer']->gioi_tinh == 1 ? 'Nam' : 'Nữ' }}</div>
+                    <div class="p-2"> Loại phòng :</div>
+                    <div class="p-2">
+                        @if ($data['roomInfo'][0]->ma_loai_phong == 1)
+                                {{ 'Standard (STD)' }}
+                        @endif
+                        @if ($data['roomInfo'][0]->ma_loai_phong == 2)
+                        {{ 'Superior (SUP)' }}
+                        @endif
+                        @if ($data['roomInfo'][0]->ma_loai_phong == 3)
+                        {{ 'Deluxe (DLX)' }}
+                        @endif
+                    </div>
                 </div>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 w-10"> Thời gian nhận phòng :</div>
+
+                    <div class="p-2"> {{ $data['roomPass'][0]->created_at }}</div>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 w-10"> Thời gian trả phòng :</div>
+                    <div class="p-2"> {{ $data['billInfo'][0]->created_at}}</div>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <h4 class="text-center">------------------ Tính tiền ------------------</h4>
+            <table>
+                <tr>
+                    <th>Tên dịch vụ</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                </tr>
+                @foreach ($data['servicesUse'] as $key)
+                    <tr>
+                        <td>
+                        @foreach ($key->dichvus as $value)
+                                {{ $value->ten_dich_vu }}
+                        @endforeach
+                        </td>
+                        <td>
+                            @foreach ($key->dichvus as $value)
+                                    {{ $value->gia_dich_vu }}
+                            @endforeach
+                        </td>
+                        <td>
+                            {{ $key->so_luong }}
+                        </td>
+                    </tr>
+                @endforeach
+                <tr style="border-bottom: 1px solid black;">
+                    <td>Tiền phòng </td>
+                    <td>{{ $data['roomInfo'][0]->gia_phong}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><h4>Tổng Cộng</h4></td>
+                    
+                </tr>
+
+            </table>
         </div>
     </div>
 </div>

@@ -22,8 +22,8 @@ class BillController extends Controller
 
     public function getBillById(Request $request){
         $data = $this->billService->getBillById($request->id);
-        // return view('admin.bill.billdetail',compact('data'));
-         return $data;
+         return view('admin.bill.billdetail',compact('data'));
+
     }
     public function createBill(Request $request){
        $bill = $this->billService->createBill($request->all());

@@ -54,18 +54,20 @@ class BillServices{
      public function getBillById($id){
 
             $bill =  $this->bill->where('ma_hoa_don',$id)->get();
-
             $roompass = $this->roompass->where('ma_phieu_dat_phong',$bill[0]->ma_phieu_dat_phong)->get();
             $customer =  $this->customer->find($roompass[0]->ma_khach_hang);
-            $roomInfo = $this->room->where('ma_phong',$bill[0]->ma_phong_dat)->get();
-            $services = $this->billServices->with('dichvus')->where('ma_phieu_dat_phong',$bill[0]->ma_phieu_dat_phong)->get();
 
+            $roomInfo = $this->room->where('ma_phong',$roompass[0]->ma_phong_dat)->get();
+
+            $services = $this->billServices->with('dichvus')->where('ma_phieu_dat_phong',$bill[0]->ma_phieu_dat_phong)->get();
 
             return [
                 'infoCustomer' => $customer,
                 'servicesUse' => $services,
                 'roomPass' => $roompass,
-                'roomInfo' => $roomInfo
+                'roomInfo' => $roomInfo,
+                'billInfo' => $bill,
+                // 'totalMoney' => $totalMoney
             ];
         }
 }
