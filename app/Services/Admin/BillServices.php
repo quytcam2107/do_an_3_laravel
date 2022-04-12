@@ -7,6 +7,8 @@ use App\Models\HoaDon;
 use App\Models\PhieuDatPhong;
 use App\Models\PhieuDichVu;
 use App\Models\Phong;
+use Illuminate\Support\Facades\Session;
+use Yajra\Datatables\Datatables;
 
 class BillServices{
 
@@ -31,6 +33,7 @@ class BillServices{
        $serviceUse = $this->billServices->where('ma_phieu_dat_phong',$params['book_room_id'])->get();
         $bill = $this->bill->create([
             'ma_phieu_dat_phong' => $params['book_room_id'],
+            'nguoi_tao' => Session::get('loginId'),
         ]);
         return [
             'bill' => $bill,

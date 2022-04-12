@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->group(function () {
+    Route::get('test', [TestController::class, 'test']);
 //    Route::get('login', [LoginController::class, 'showFormLogin'])->name('admin.login.showForm');
 //    Route::post('login', [LoginController::class, 'login']);
     Route::get('logout', [LoginController::class, 'logout']);
@@ -30,7 +31,9 @@ Route::prefix('admin')->group(function () {
             Route::post('/addRoomPass', [BookRoomController::class, 'addRoomPass']);
             Route::get('/viewconfirm/{id}', [BookRoomController::class, 'viewConfirm'])->name('admin.bookroom.viewconfirm');
             Route::post('/inforoomusing', [BookRoomController::class, 'inforRoomUsring'])->name('admin.bookroom.infoRoomUsing');
+            Route::post('/insertservice', [BookRoomController::class, 'inserService'])->name('admin.bookroom.inserservice');
             Route::post('/confirm', [BookRoomController::class, 'conFirmBookRoom'])->name('admin.bookroom.confirm');
+            Route::get('/getBillById/{id}', [BillController::class, 'getBillById'])->name('admin.bill.getBillById');
             Route::get('/test', [BookRoomController::class, 'deleteSoft']);
         });
         Route::group(['prefix' => 'room'], function () {
@@ -49,10 +52,13 @@ Route::prefix('admin')->group(function () {
             Route::get('/getCustomer/{id}', [CheckoutController::class, 'getRoomById']);
         });
         Route::group(['prefix' => 'bill'], function () {
+            Route::get('/', [BillController::class, 'getBill'])->name('admin.bill.getBill');
+            Route::get('/getBillById', [BillController::class, 'getBillById'])->name('admin.bill.getBillById');
             Route::post('/create', [BillController::class, 'createBill'])->name('admin.bill.createBill');
         });
     });
 });
 
 //test
-Route::post('/test', [TestController::class, 'test'])->name('test');
+Route::get('/test', [BillController::class, 'testReQuest'])->name('test');
+

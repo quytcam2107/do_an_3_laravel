@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DichVu;
 use App\Models\PhieuDatPhong;
 use App\Services\Admin\BookRoomService;
 use Illuminate\Http\Request;
@@ -12,8 +13,11 @@ class BookRoomController extends Controller
 {
     protected $bookRoomService;
 
-    public function __construct(BookRoomService $bookRoomService)
+    protected $service;
+
+    public function __construct(BookRoomService $bookRoomService,DichVu $service)
     {
+        $this->service = $service;
         $this->bookRoomService = $bookRoomService;
     }
 
@@ -35,21 +39,24 @@ class BookRoomController extends Controller
         $result = $this->bookRoomService->insertRoomPass($input);
         return response()->json($result);
     }
+
     public function viewConfirm(Request $request){
         $data = $this->bookRoomService->viewConfirm($request->id);
          return view('admin.bookroom.viewconfirm',compact('data'));
     }
+
     public function conFirmBookRoom(Request $request){
         $data = $this->bookRoomService->conFirmBookRoom($request->all());
         return redirect()->route('admin.bookroom.index')->with(['msg' => 'Đặt phòng thành công','data' => $data]);;
     }
-    public function inforRoomUsring(Request $request){
 
+    public function inforRoomUsring(Request $request){
         $data = $this->bookRoomService->inforRoomUsring($request->all());
-        // dd($data);
         return view('admin.bookroom.viewbookroomusing',compact('data'));
     }
-    public function deleteSoft(){
-        PhieuDatPhong::where('ma_phieu_dat_phong',2)->delete();
+
+    public function inserService(Request $request){
+        return $this->bookRoomService->inserServices($request->all());
     }
+
 }

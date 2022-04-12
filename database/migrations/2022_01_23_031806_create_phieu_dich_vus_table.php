@@ -17,7 +17,7 @@ class CreatePhieuDichVusTable extends Migration
             $table->increments('ma_phieu_dich_vu');
             $table->unsignedBigInteger('ma_dich_vu');
             $table->unsignedBigInteger('ma_phieu_dat_phong');
-            $table->integer('so_luong')->nullable();
+            $table->integer('so_luong')->default(1)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

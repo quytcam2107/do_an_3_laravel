@@ -21,6 +21,7 @@ class HoaDon extends Model
         'ma_phieu_dat_phong',
         'ma_dich_vu',
         'tong_tien',
+        'nguoi_tao',
     ];
     protected $hidden = [
         '',

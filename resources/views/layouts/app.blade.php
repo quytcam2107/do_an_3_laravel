@@ -22,6 +22,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <style>
         .pt-5{
@@ -30,8 +31,14 @@
         .mt-3{
             margin: 0 !important;
         }
+        .navbar{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
         </style>
     @yield('css')
+    @stack('css-datatable')
 </head>
 
 <body>
@@ -40,7 +47,7 @@
 
     </div>
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="padding: 0;margin: 0">
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo" href="{{ route('admin.home') }}"><img
                     src="https://www.pngkey.com/png/full/246-2466707_best-western-sunrise-hotel-logo-png-transparent-best.png"
@@ -246,7 +253,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">
+                    <a class="nav-link" href="{{ route('admin.bill.getBill') }}">
                         <span class="menu-title">Danh sách hóa đơn</span>
                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
@@ -304,6 +311,7 @@
 <!-- End custom js for this page -->
 
 @yield('js')
+@stack('js-datatable')
 
 </body>
 </html>
