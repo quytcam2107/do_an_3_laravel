@@ -18,14 +18,14 @@ class CreatePhieuDatPhongsTable extends Migration
     public function up()
     {
         Schema::create('phieu_dat_phongs', function (Blueprint $table) {
-           $table->bigIncrements('ma_phieu_dat_phong');
-            $table->bigInteger('ma_khach_hang');
-            $table->bigInteger('ma_phong_dat')->unsigned();
+            $table->bigIncrements('ma_phieu_dat_phong');
+            $table->bigInteger('ma_khach_hang')->nullable();
+            $table->bigInteger('ma_phong_dat')->unsigned()->nullable();
             $table->bigInteger('so_nguoi_di_kem')->nullable();
             $table->float('tien_dat_coc')->nullable();
             $table->timestamp('ngay_den')->useCurrent();
             $table->timestamp('ngay_di')->useCurrent();
-            $table->string('nguoi_tao_phieu');;
+            $table->string('nguoi_tao_phieu')->nullable();
             $table->string('ghi_chu')->nullable();
             $table->softDeletes();
             $table->timestamps();
