@@ -35,6 +35,7 @@ class UserController extends Controller
         $abc->save();
         $them->save();
 
-        return redirect()->back();
+       
+        return redirect()->back()->with('success','Chúc mừng bạn đã đặt phòng thành công');
     }
 }

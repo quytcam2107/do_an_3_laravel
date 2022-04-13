@@ -20,11 +20,21 @@
 <link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/discount/assets/css/discount.css">
 <link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/mainmenu/assets/css/bottommenu.css">
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="" style="overflow: visible;">
- 
+    <div style="text-align: center; color: #55595A;">
+        <h3 id="hvn"><i class="fa fa-clock"></i>
+            <script>
+                var today = new Date();
+                var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear()+', '+today.getHours()+':'+today.getMinutes();
+                
+                document.getElementById("hvn").innerHTML = date;
+            </script>
+        </h3>
+    </div>
     <!-- END: header -->
     <div class="main row-content" id="main">
         <div class="row-content pos_header">
@@ -145,23 +155,20 @@
                         </div>
                         <div class="col-search col-btn">
                             <!-- <input class="btn-primary" type="submit" name="" value="" /> -->
-                            <button type="submit" class="btn-primary btn-search-all">Gửi thông tin</button>
+                            <button type="submit" class="btn-primary btn-search-all">Đặt phòng</button>
                         </div>
                     </form>
                 </div>
+                
+                
             </div>
-            <div class="owl-nav disabled">
-                <div class="owl-prev disabled">&nbsp;</div>
-                <div class="owl-next disabled">&nbsp;</div>
-            </div>
-            <div class="owl-dots disabled">
-                <div class="owl-dot active"><span></span></div>
-            </div>
+            
+            
         </div>
     </div>
     </div>
     </div> <!-- END: .pos-top -->
-
+    <div class="ml-2">@include('layouts/thongbao')</div>
     </div>
     <!-- END: main -->
     <footer class="row-content" id="footer">
@@ -185,5 +192,12 @@
     </footer><!-- END: footer -->
 
 </body>
+
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("ngayDen")[0].setAttribute('min', today);
+    var today1 = new Date().toISOString().split('T')[0];
+    document.getElementsByName("ngayDi")[0].setAttribute('min', today1);
+</script>
 
 </html>
