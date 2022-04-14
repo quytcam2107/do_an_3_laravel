@@ -36,8 +36,13 @@
 
 <script>
     $(function() {
-        $('#bill-table').DataTable({
-
+        var table = $('#bill-table').DataTable({
+            searchPanes: {
+            i18n: {
+                emptyMessage: "<i><b>EMPTY</b></i>"
+                    }
+            },
+            dom: 'Plfrtip',
             processing: true,
             serverSide: true,
             language: {
@@ -67,8 +72,9 @@
                 { data: 'ho_ten_khach', name: 'ho_ten_khach' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'ten_nhan_vien', name: 'ten_nhan_vien' },
-                { data: 'action', name: 'action' },
+                { data: null },
             ],
+
             "columnDefs":
                 [
                     {
@@ -92,10 +98,16 @@
                     },
                     {
                         "targets": 5,
+
+                    },
+                    {
+                        "targets": 6,
+                        defaultContent: '<button>abc</button>'
                     }
 
                 ]
         });
+
     });
     </script>
 

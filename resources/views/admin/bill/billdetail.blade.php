@@ -2,6 +2,17 @@
 @section('title','Chi tiết hóa đơn')
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 @section('css')
+<style>
+    .tag-bill{
+      position: relative;
+    }
+    .status-bill{
+        display: flex;
+        flex-direction: row-reverse;
+        color: red;
+    }
+
+</style>
 @endsection
 
 @push('css-datatable')
@@ -13,7 +24,14 @@
 
 <input type="text" class="d-none" id="idRoomPass" value="{{ $data['roomPass'][0]->ma_phieu_dat_phong }}">
 <div class="card">
-    <div class="card-body">
+    <div class="card-body tag-bill">
+        @if ($data['roomInfo'][0]->tong_tien == null)
+            <h1 class="status-bill"><span class="badge badge-danger">Chưa thanh toán</span></h1>
+        @endif
+        @if ($data['roomInfo'][0]->tong_tien != null)
+            <h1 class="status-bill"><span class="badge badge-success">Đã thanh toán</span></h1>
+        @endif
+
         <h1 class="text-center">Hóa đơn chi tiết</h1>
         <div class="row mb-4">
             <div class="col">
@@ -70,6 +88,7 @@
                 </div>
                 <div class="d-flex flex-wrap">
                     <div class="p-2"> Loại phòng :</div>
+
                     <div class="p-2">
                         @if ($data['roomInfo'][0]->ma_loai_phong == 1)
                                 {{ 'Standard (STD)' }}
