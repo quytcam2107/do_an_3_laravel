@@ -20,6 +20,7 @@
                     <th>Họ tên </th>
                     <th>Tạo lúc </th>
                     <th>Người tạo </th>
+                    <th>Tác vụ</th>
                 </tr>
             </thead>
         </table>
@@ -35,8 +36,13 @@
 
 <script>
     $(function() {
-        $('#bill-table').DataTable({
-
+        var table = $('#bill-table').DataTable({
+            searchPanes: {
+            i18n: {
+                emptyMessage: "<i><b>EMPTY</b></i>"
+                    }
+            },
+            dom: 'Plfrtip',
             processing: true,
             serverSide: true,
             language: {
@@ -66,7 +72,9 @@
                 { data: 'ho_ten_khach', name: 'ho_ten_khach' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'ten_nhan_vien', name: 'ten_nhan_vien' },
+                { data: null },
             ],
+
             "columnDefs":
                 [
                     {
@@ -76,11 +84,30 @@
                     {
                         "targets": 1,
                         "render": function ( data, type, row, meta ) {
-                        return '<a href="getBillById/'+data+'">#'+data+'</a>';
+                        return '<a href="bill/getBillById/'+data+'">#'+data+'</a>';
                         }
+                    },
+                    {
+                        "targets": 2,
+                    },
+                    {
+                        "targets": 3,
+                    },
+                    {
+                        "targets": 4,
+                    },
+                    {
+                        "targets": 5,
+
+                    },
+                    {
+                        "targets": 6,
+                        defaultContent: '<button>abc</button>'
                     }
+
                 ]
         });
+
     });
     </script>
 

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class ApiBillController extends Controller
 {
-
         public function getApiBill(){
             $users =DB::table('hoa_dons')->select('hoa_dons.ma_hoa_don','phieu_dat_phongs.*','phieu_dat_phongs.nguoi_tao_phieu','khach_hangs.ho_ten_khach','phongs.ten_phong','nhan_viens.ten_nhan_vien')
             ->join('phieu_dat_phongs', 'phieu_dat_phongs.ma_phieu_dat_phong', '=', 'hoa_dons.ma_phieu_dat_phong')
@@ -21,12 +20,13 @@ class ApiBillController extends Controller
             return Datatables::of($users)
             ->addColumn('action', function ($user) {
                 $deletebtn = '<a class="btn btn-secondary btn-sm" href=""><i class="fa fa-trash-o"></i></a>';
-
                 return $deletebtn;
             })
             // ->removeColumn('id')
             // ->rawColumns(['action'])
             ->make(true);
-    }
+        }
+
+
 
 }

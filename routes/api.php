@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/hoadon', [ApiBillController::class, 'getApiBill'])->name('api.getBillApi');
+Route::get('/hoadon/{id}', [ApiBillController::class, 'getApiBillById'])->name('api.getBillByIdApi');
