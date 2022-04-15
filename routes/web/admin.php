@@ -52,8 +52,9 @@ Route::prefix('admin')->group(function () {
             Route::get('/getCustomer/{id}', [CheckoutController::class, 'getRoomById']);
         });
         Route::group(['prefix' => 'bill'], function () {
-            Route::get('/', [BillController::class, 'getBill'])->name('admin.bill.getBill');
+            Route::get('/', [BillController::class, 'getBill'])->name('admin.bill.getBill')->name('admin.bill.index');
             Route::get('/getBillById/{id}', [BillController::class, 'getBillById'])->name('admin.bill.getBillById');
+            Route::post('confirmPayment',[BillController::class,'confirmPayment'])->name('admin.bill.confirm');
             Route::post('/create', [BillController::class, 'createBill'])->name('admin.bill.createBill');
             Route::post('/getQuantityService', [BillController::class, 'getQuantitySerice'])->name('admin.bill.getQuantitySerice');
         });

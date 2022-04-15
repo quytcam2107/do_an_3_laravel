@@ -87,4 +87,14 @@ class BillServices{
                 'services' => $services
             ];
         }
+        public function confirmPayment($params){
+            $infoBIll = $this->bill->where('ma_hoa_don',$params['idBill'])->first();
+            $infoBIll->update([
+                'tong_tien' => $params['totalMoney']
+                ]
+            );
+            return [
+                'infoBill' => $infoBIll
+            ];
+        }
 }

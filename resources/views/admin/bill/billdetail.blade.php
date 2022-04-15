@@ -23,12 +23,19 @@
 {{-- {{ dd($data['servicesUse']) }} --}}
 
 <input type="text" class="d-none" id="idRoomPass" value="{{ $data['roomPass'][0]->ma_phieu_dat_phong }}">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-light">
+      <li class="breadcrumb-item"><a href="/admin/bill/">Hóa đơn</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Hóa đơn chi tiết</li>
+    </ol>
+  </nav>
+
 <div class="card">
     <div class="card-body tag-bill">
-        @if ($data['roomInfo'][0]->tong_tien == null)
-            <h1 class="status-bill"><span class="badge badge-danger">Chưa thanh toán</span></h1>
+        @if ($data['billInfo'][0]->tong_tien == null)
+            <h1 class="status-bill"><span class="badge badge-danger not-payment">Chưa thanh toán</span></h1>
         @endif
-        @if ($data['roomInfo'][0]->tong_tien != null)
+        @if ($data['billInfo'][0]->tong_tien != null)
             <h1 class="status-bill"><span class="badge badge-success">Đã thanh toán</span></h1>
         @endif
 
@@ -164,14 +171,17 @@
                     flex-direction: column-reverse;"><h6>Số tiền thanh toán còn lại</h6></td>
                     <td colspan="2"> <span class="text-danger">{{ number_format(($data['totalMoneyServices'] + $data['roomInfo'][0]->gia_phong) - $data['roomPass'][0]->tien_dat_coc) }}VND</span></td>
                     <td></td>
+                    <input class="totalMoney" value="{{ ($data['totalMoneyServices'] + $data['roomInfo'][0]->gia_phong) - $data['roomPass'][0]->tien_dat_coc }}">
                 </tr>
 
             </table>
-            <button class="btn-test"></button>
+            <input type="text" class="d-none idBill" value="{{ $data['billInfo'][0]->ma_hoa_don }}">
+            <button class="btn-test btn btn-gradient-danger btn-fw confirm-payment">Xác nhận thanh toán</button>
             <span id="okela"></span>
         </div>
     </div>
 </div>
+
 
 
 @endsection
@@ -189,24 +199,28 @@
         }
     });
 
-    $(document).ready(function () {
+    $(document).ready(function () {idBill
         var idRoomPass = $('#idRoomPass').val();
+        var idBill = $('.idBill').val();
+        var totalMoney = $('.totalMoney').val();
      $('.btn-test').click(function (e) {
            $.ajax({
                type: "POST",
-               url: "{{ route('admin.bill.getQuantitySerice') }}",
+               url: "{{ route('admin.bill.confirm') }}",
                data:{
-                    idRoomPass:idRoomPass
+                    idBill:idBill,
+                    totalMoney:totalMoney
                },
                dataType: "json",
                success: function (response) {
-                   console.log(response.servicesUse);
-                   var total = 0;
-                   for (const [key, value] of Object.entries(response.servicesUse)) {
-                        console.log(`${key}: ${value.so_luong}`);
-                        total = total +value.so_luong;
-                    }
-                   $('#okela').html(total);
+                    alert("Thành công !");
+                    $('.not-payment').removeClass('badge-danger');
+                    $('.not-payment').addClass('badge-success');
+                    $('.not-payment').html('Đã thanh toán');
+                    $('.confirm-payment').addClass('disabled');
+                    $('.confirm-payment').removeClass('btn-gradient-danger');
+                    $('.confirm-payment').html('Thanh toán thành công ');
+                    $('.confirm-payment').addClass('btn-gradient-success');
                }
            });
         });

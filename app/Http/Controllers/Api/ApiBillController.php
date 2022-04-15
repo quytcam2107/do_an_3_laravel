@@ -15,6 +15,7 @@ class ApiBillController extends Controller
             ->join('phongs', 'phongs.ma_phong', '=', 'phieu_dat_phongs.ma_phong_dat')
             ->join('nhan_viens', 'nhan_viens.ma_nhan_vien', '=', 'phieu_dat_phongs.nguoi_tao_phieu')
             ->join('khach_hangs', 'khach_hangs.ma_khach_hang', '=', 'phieu_dat_phongs.ma_khach_hang')
+            
             ->get();
 
             return Datatables::of($users)

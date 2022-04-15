@@ -22,18 +22,22 @@ class BillController extends Controller
 
     public function getBillById(Request $request){
         $data = $this->billService->getBillById($request->id);
-        
+
          return view('admin.bill.billdetail',compact('data'));
 
     }
     public function createBill(Request $request){
        $bill = $this->billService->createBill($request->all());
-       return response()->array($bill);
+       return response()->json($bill);
     }
     public function getQuantitySerice(Request $request){
         $id = $request->idRoomPass;
         $totalQuantity = $this->billService->getBillById($id);
         return response()->json($totalQuantity);
+     }
+     public function confirmPayment(Request $request){
+        $data = $this->billService->confirmPayment($request->all());
+         return response()->json($data);
      }
 
 
