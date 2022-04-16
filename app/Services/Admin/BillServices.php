@@ -90,6 +90,11 @@ class BillServices{
         }
         public function confirmPayment($params){
             $infoBIll = $this->bill->where('ma_hoa_don',$params['idBill'])->first();
+            $room = $this->room->where('ma_phong',$params['idRoom'])->first();
+            $room->update([
+                'tinh_trang_phong' => 1
+            ]);
+
             $infoBIll->update([
                 'tong_tien' => $params['totalMoney']
                 ]

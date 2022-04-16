@@ -172,6 +172,9 @@
                                     @if($room->tinh_trang_phong == 3)
                                         <td ><button type="button" class="btn btn-gradient-warning btn-rounded btn-fw">Đang sử dụng</button></td>
                                     @endif
+                                    @if($room->tinh_trang_phong == 4)
+                                        <td ><button type="button" class="btn btn-gradient-danger btn-rounded btn-fw">Đã có người đặt</button></td>
+                                    @endif
                                     <td>
                                         <button class="btn  btn-success get_data  mt-3 btn_edit"  id="{{$room->ma_phong}}">Sửa</button>
                                     </td>

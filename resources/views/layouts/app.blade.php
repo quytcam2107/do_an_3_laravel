@@ -62,14 +62,14 @@
                 <span class="mdi mdi-menu"></span>
             </button>
             <div class="search-field d-none d-md-block">
-                <form class="d-flex align-items-center h-100" action="#">
+                {{-- <form class="d-flex align-items-center h-100" action="#">
                     <div class="input-group">
                         <div class="input-group-prepend bg-transparent">
                             <i class="input-group-text border-0 mdi mdi-magnify"></i>
                         </div>
                         <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
                     </div>
-                </form>
+                </form> --}}
             </div>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
@@ -94,7 +94,7 @@
                             <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/admin/logout">
-                            <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+                            <i class="mdi mdi-logout me-2 text-primary"></i>Đăng xuất khỏi .... </a>
                     </div>
                 </li>
                 <li class="nav-item d-none d-lg-block full-screen-link">
@@ -104,11 +104,11 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                    {{-- <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                        data-bs-toggle="dropdown">
                         <i class="mdi mdi-bell-outline"></i>
                         <span class="count-symbol bg-danger"></span>
-                    </a>
+                    </a> --}}
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                          aria-labelledby="notificationDropdown">
                         <h6 class="p-3 mb-0">Notifications</h6>
@@ -223,14 +223,14 @@
                        aria-controls="ui-basic">
                         <span class="menu-title">Quản lý Nhân viên</span>
                         <i class="menu-arrow"></i>
-                        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                        <i class="mdi mdi-face menu-icon"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('admin.staff.index')}}">Nhân viên </a>
                             </li>
-                            <li class="nav-item"><a class="nav-link"
-                            href="#">Typography</a></li>
+                            {{-- <li class="nav-item"><a class="nav-link"
+                            href="#">Typography</a></li> --}}
                         </ul>
                     </div>
                 </li>
@@ -240,7 +240,7 @@
                        aria-controls="general-pages">
                         <span class="menu-title">Quản lý Phòng</span>
                         <i class="menu-arrow"></i>
-                        <i class="mdi mdi-medical-bag menu-icon"></i>
+                        <i class="mdi mdi-home-modern menu-icon"></i>
                     </a>
                     <div class="collapse" id="general-pages">
                         <ul class="nav flex-column sub-menu">
@@ -252,19 +252,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{'/admin/bill'}}">
                         <span class="menu-title">Danh sách hóa đơn</span>
-                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                        <i class="mdi mdi-newspaper menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.customer_showcustomer')}}">
                         <span class="menu-title">Khách hàng</span>
-                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                        <i class="mdi mdi-account-outline menu-icon"></i>
                     </a>
                 </li>
 
-                <li class="nav-item sidebar-actions">
-
-                </li>
+                {{-- <li class="nav-item">
+                    <a class="nav-link" href="{{'/admin/bill'}}">
+                        <span class="menu-title">Danh sách hóa đơn</span>
+                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                </li> --}}
             </ul>
         </nav>
         <!-- partial -->

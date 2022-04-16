@@ -14,7 +14,11 @@
 
 </style>
 @endsection
-
+<style>
+    .main-panel{
+        margin-left: 150px !important;
+    }
+</style>
 @push('css-datatable')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/date-1.1.2/fc-4.0.2/fh-3.2.2/r-2.2.9/rg-1.1.4/sc-2.0.5/sb-1.3.2/sl-1.3.4/datatables.min.css"/>
 @endpush
@@ -22,6 +26,7 @@
 @section('main-content')
 {{-- {{ dd($data['servicesUse']) }} --}}
 
+<input type="text" class="d-none" id="idRoom" value="{{ $data['roomInfo'][0]->ma_phong }}">
 <input type="text" class="d-none" id="idRoomPass" value="{{ $data['roomPass'][0]->ma_phieu_dat_phong }}">
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb bg-light">
@@ -30,7 +35,7 @@
     </ol>
   </nav>
 
-<div class="card">
+<div class="card mb-4">
     <div class="card-body tag-bill">
         @if ($data['billInfo'][0]->tong_tien == null)
             <h1 class="status-bill"><span class="badge badge-danger not-payment">Chưa thanh toán</span></h1>
@@ -39,13 +44,13 @@
             <h1 class="status-bill"><span class="badge badge-success">Đã thanh toán</span></h1>
         @endif
 
-        <h1 class="text-center">Hóa đơn chi tiết</h1>
+        <h1 class="text-center">Hóa đơn {{ '#'.$data['billInfo'][0]->ma_hoa_don }}</h1>
         <div class="row mb-4">
             <div class="col">
                     <img class="w-25" src="https://www.pngkey.com/png/full/246-2466707_best-western-sunrise-hotel-logo-png-transparent-best.png">
             </div>
             <div class="col">
-                <h4>Ab Hotel</h4>
+                <h4>Sunrise Hotel</h4>
                 <p>Địa chỉ : số 999 - đường 1000 - thành phố  Mộng Mơ</p>
                 <p>Số điện thoại: 0123456789JQK</p>
             </div>
@@ -177,16 +182,23 @@
             </table>
             <input type="text" class="d-none idBill" value="{{ $data['billInfo'][0]->ma_hoa_don }}">
             @if ($data['billInfo'][0]->tong_tien == null)
-                <button class="btn-test btn btn-gradient-danger btn-fw confirm-payment">Xác nhận thanh toán</button>
-            @elseif ($data['billInfo'][0]->tong_tien != null)
-            <button class="btn-test btn btn-gradient-success btn-rounded confirm-payment disabled">Đã thanh toán thành công</button>
+                <button class="btn-test btn btn-gradient-danger btn-fw confirm-payment">Xác nhận đã thanh toán</button>
             @endif
-
+            @if ($data['billInfo'][0]->tong_tien != null)
+            <button class="btn-test btn btn-fw confirm-payment disabled btn-gradient-success disabled">Thanh toán thành công</button>
+            @endif
             <span id="okela"></span>
         </div>
     </div>
 </div>
-
+<div class="row mb-5 append-print">
+    @if ($data['billInfo'][0]->tong_tien == null)
+    <a class="badge badge-pill badge-danger notprint">Chưa thanh toán không thể  in hóa đơn</a>
+    @endif
+    @if ($data['billInfo'][0]->tong_tien != null)
+    <button class="btn btn-gradient-info btn-icon-text" onclick="window.print()">In<i class="mdi mdi-printer btn-icon-append"></i></button>
+    @endif
+</div>
 
 
 @endsection
@@ -196,7 +208,14 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/date-1.1.2/fc-4.0.2/fh-3.2.2/r-2.2.9/rg-1.1.4/sc-2.0.5/sb-1.3.2/sl-1.3.4/datatables.min.js"></script>
-
+<script>
+    $(document).ready(function () {
+        $('.sidebar-offcanvas').remove();
+        $('.default-layout-navbar').remove();
+        $('.breadcrumb').remove();
+        $('.footer').remove();
+    });
+</script>
 <script>
     $.ajaxSetup({
     headers: {
@@ -204,21 +223,25 @@
         }
     });
 
-    $(document).ready(function () {idBill
+    $(document).ready(function () {
+        var idRoom =$('#idRoom').val();
         var idRoomPass = $('#idRoomPass').val();
         var idBill = $('.idBill').val();
         var totalMoney = $('.totalMoney').val();
+        var btn = "<button class='btn btn-gradient-info btn-icon-text' onclick='window.print()'>In<i class='mdi mdi-printer btn-icon-append'></i></button>";
      $('.btn-test').click(function (e) {
            $.ajax({
                type: "POST",
                url: "{{ route('admin.bill.confirm') }}",
                data:{
                     idBill:idBill,
-                    totalMoney:totalMoney
+                    totalMoney:totalMoney,
+                    idRoom:idRoom
                },
                dataType: "json",
                success: function (response) {
                     alert("Thành công !");
+                    console.log(response);
                     $('.not-payment').removeClass('badge-danger');
                     $('.not-payment').addClass('badge-success');
                     $('.not-payment').html('Đã thanh toán');
@@ -226,6 +249,8 @@
                     $('.confirm-payment').removeClass('btn-gradient-danger');
                     $('.confirm-payment').html('Thanh toán thành công ');
                     $('.confirm-payment').addClass('btn-gradient-success');
+                    $('.notprint').remove();
+                    $('.append-print').append(btn);
                }
            });
         });

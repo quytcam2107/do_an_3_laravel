@@ -74,14 +74,14 @@
                 { data: 'ten_nhan_vien', name: 'ten_nhan_vien' },
                 { data: null },
             ],
-
+            order:[[0,"desc"]],
             "columnDefs":
                 [
 
                     {
                         "targets": 0,
                         "render": function ( data, type, row, meta ) {
-                            return '<a href="bill/getBillById/'+data+'">#'+data+'</a>';
+                            return '<a target="_blank" href="bill/getBillById/'+data+' ">#'+data+'</a>';
                         }
                     },
                     {

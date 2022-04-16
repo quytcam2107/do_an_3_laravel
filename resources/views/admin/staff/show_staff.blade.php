@@ -29,14 +29,24 @@
                                 <th>ID</th>
                                 <th>Tên nhân viên</th>
                                 <th>Giới tính</th>
-
+                                <th>Trạng thái</th>
                             </thead>
                             <tbody>
+
                                @foreach($accounts as $account)
                                     <tr>
                                         <td>{{$account->ma_tai_khoan ?? '-'}}</td>
                                         <td>{{$account->taikhoan->ten_nhan_vien ?? '-'}}</td>
                                         <td>{{$account->taikhoan->gioitinh == 1 ? 'Nam' : 'Nữ' }}</td>
+                                        {{-- <td><button ><i class="mdi mdi-block-helper"></i></button></td> --}}
+                                        <td>
+                                            @if ($account->tinh_trang === 1)
+                                                <a ><i class="mdi mdi-lock-open-outline text-primary h3"></i></a>
+                                            @else
+                                                <a ><i class="mdi mdi-block-helper text-danger h3"></i></a>
+                                            @endif
+
+                                        </td>
                                     </tr>
                                @endforeach
                             </tbody>

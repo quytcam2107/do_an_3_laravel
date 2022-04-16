@@ -23,6 +23,7 @@ Route::prefix('admin')->group(function () {
         //Route Staff
         Route::group(['prefix' => 'staff'], function () {
             Route::get('/', [StaffController::class, 'showStaff'])->name('admin.staff.index');
+            Route::post('/', [StaffController::class, 'updateStatusStaff'])->name('admin.staff.updatestatus');
         });
         Route::group(['prefix' => 'bookroom'], function () {
             Route::get('/', [BookRoomController::class, 'bookRoom'])->name('admin.bookroom.index');

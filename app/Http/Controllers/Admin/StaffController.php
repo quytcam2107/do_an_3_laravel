@@ -14,4 +14,8 @@ class StaffController extends Controller
         return view('admin.staff.show_staff',compact('accounts','title'));
 //        return ($accounts);
     }
+    public function updateStatusStaff(){
+        $data = "success";
+        return response()->json();
+    }
 }
