@@ -126,4 +126,66 @@ class BillServices{
 
             ];
         }
+        public function chart(){
+            $textMonth = "Tháng ";
+            $totalMoneyMonth = 0;
+            for($i = 1;$i <= 12;$i++){
+                $lable[$i] = $textMonth.$i;
+                // $billMoneyMonth[$i] = $this->bill->select("SUM(tong_tien) as total")->whereMonth('created_at',$i)->get();
+                $billMoneyMonth[$i] = DB::table('hoa_dons')
+                    ->select(DB::raw('sum(tong_tien) as total'))
+                    ->whereMonth('created_at',$i)
+                    ->get();
+            }
+            // dd($billMoneyMonth[4][0]->total);
+            for($i = 1;$i <= 12;$i++){
+                switch($i){
+                    case 1:
+                        $month1 = $billMoneyMonth[$i][0]->total;
+                    case 2:
+                        $month2 = $billMoneyMonth[$i][0]->total;
+                    case 3:
+                        $month3 = $billMoneyMonth[$i][0]->total;
+                    case 4:
+                        $month4 = $billMoneyMonth[$i][0]->total;
+                    case 5:
+                        $month5 = $billMoneyMonth[$i][0]->total;
+                    case 6:
+                        $month6 = $billMoneyMonth[$i][0]->total;
+                    case 7:
+                        $month7 = $billMoneyMonth[$i][0]->total;
+                    case 8:
+                        $month8 = $billMoneyMonth[$i][0]->total;
+                    case 9:
+                        $month9 = $billMoneyMonth[$i][0]->total;
+                    case 10:
+                        $month10 = $billMoneyMonth[$i][0]->total;
+                    case 11:
+                        $month11 = $billMoneyMonth[$i][0]->total;
+                    case 12:
+                        $month12 = $billMoneyMonth[$i][0]->total;
+
+                }
+
+            }
+
+            // $billMoneyMonth =$this->bill->whereMonth('created_at',2)->get();
+            return [
+                'lable' => $lable,
+                'billMoneyMonth' => [
+                    'month1' => $month1,
+                    'month2' => $month2,
+                    'month3' => $month3,
+                    'month4' => $month4,
+                    'month5' => $month5,
+                    'month6' => $month6,
+                    'month7' => $month7,
+                    'month8' => $month8,
+                    'month9' => $month9,
+                    'month10' => $month10,
+                    'month11' => $month11,
+                    'month12' => $month12,
+                ]
+            ];
+        }
 }

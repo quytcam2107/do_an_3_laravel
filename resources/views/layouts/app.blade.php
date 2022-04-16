@@ -35,7 +35,9 @@
             padding: 0 !important;
             margin: 0 !important;
         }
-
+        .navbar .navbar-brand-wrapper .navbar-brand img{
+            height: 50px !important;
+        }
         </style>
     @yield('css')
     @stack('css-datatable')

@@ -19,6 +19,8 @@ use App\Http\Controllers\Api\ApiDashController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/chart', [ApiDashController::class, 'chart'])->name('api.getBillApi');
 Route::get('/dash', [ApiDashController::class, 'getTotalMoney'])->name('api.getDash');
 Route::get('/hoadon', [ApiBillController::class, 'getApiBill'])->name('api.getBillApi');
+
 Route::get('/hoadon/{id}', [ApiBillController::class, 'getApiBillById'])->name('api.getBillByIdApi');

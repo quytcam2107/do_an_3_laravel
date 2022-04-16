@@ -22,4 +22,9 @@ class ApiDashController extends Controller
         $dash = $this->billServices->getTotalMoney();
         return $dash;
     }
+    public function chart(){
+        $dash = $this->billServices->chart();
+
+        return response()->json($dash);
+    }
 }

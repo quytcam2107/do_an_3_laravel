@@ -26,28 +26,72 @@
     </div>
   </div>
 </div>
-<div>
-    <canvas id="myChart"></canvas>
+<div class="card">
+    <div class="card-body">
+    <canvas id="myChart" height="100px"></canvas>
+</div>
 </div>
 @endsection
 @section('js')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const mixedChart = new Chart(ctx, {
-    data: {
-        datasets: [{
-            type: 'bar',
-            label: 'Bar Dataset',
-            data: [10, 20, 30, 40]
-        }, {
-            type: 'line',
-            label: 'Line Dataset',
-            data: [50, 50, 50, 50],
-        }],
-        labels: ['January', 'February', 'March', 'April']
-    },
-    options: options
-});
+        $.ajax({
+            type: "get",
+            url: "/api/chart",
+
+            dataType: "json",
+            success: function (response) {
+                // console.log(response.lable);
+                var obj = response.lable;
+                var obj2 = response.billMoneyMonth;
+                var result = Object.entries(obj).reduce((ini,[k,v])=>(ini[k]=v,ini),[]);
+                console.log(response.billMoneyMonth.month4);
+                const data = {
+                labels: result,
+                datasets: [{
+                    type: 'bar',
+                    label: 'Thống kê theo tháng',
+                    data: [0,
+                    response.billMoneyMonth.month1,
+                    response.billMoneyMonth.month2,
+                    response.billMoneyMonth.month3,
+                    response.billMoneyMonth.month4,
+                    response.billMoneyMonth.month5,
+                    response.billMoneyMonth.month6,
+                    response.billMoneyMonth.month7,
+                    response.billMoneyMonth.month8,
+                    response.billMoneyMonth.month9,
+                    response.billMoneyMonth.month10,
+                    response.billMoneyMonth.month11,
+                    response.billMoneyMonth.month12,
+                    ],
+                    borderColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+                }]
+                };
+
+                const config = {
+                type: 'scatter',
+                data: data,
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                    }
+                }
+                };
+
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
+                    }
+                });
+
 </script>
   <script>
        $.ajaxSetup({
