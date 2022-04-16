@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiBillController;
+use App\Http\Controllers\Api\ApiDashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,6 @@ use App\Http\Controllers\Api\ApiBillController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/dash', [ApiDashController::class, 'getTotalMoney'])->name('api.getDash');
 Route::get('/hoadon', [ApiBillController::class, 'getApiBill'])->name('api.getBillApi');
 Route::get('/hoadon/{id}', [ApiBillController::class, 'getApiBillById'])->name('api.getBillByIdApi');

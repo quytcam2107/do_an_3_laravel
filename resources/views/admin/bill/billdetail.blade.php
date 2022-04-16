@@ -176,7 +176,12 @@
 
             </table>
             <input type="text" class="d-none idBill" value="{{ $data['billInfo'][0]->ma_hoa_don }}">
-            <button class="btn-test btn btn-gradient-danger btn-fw confirm-payment">Xác nhận thanh toán</button>
+            @if ($data['billInfo'][0]->tong_tien == null)
+                <button class="btn-test btn btn-gradient-danger btn-fw confirm-payment">Xác nhận thanh toán</button>
+            @elseif ($data['billInfo'][0]->tong_tien != null)
+            <button class="btn-test btn btn-gradient-success btn-rounded confirm-payment disabled">Đã thanh toán thành công</button>
+            @endif
+
             <span id="okela"></span>
         </div>
     </div>

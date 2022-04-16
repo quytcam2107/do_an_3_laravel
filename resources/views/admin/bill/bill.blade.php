@@ -14,13 +14,13 @@
         <table id="bill-table" class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
+
                     <th>Mã Hóa Đơn</th>
                     <th>Tên Phòng</th>
                     <th>Họ tên </th>
                     <th>Tạo lúc </th>
                     <th>Người tạo </th>
-                    <th>Tác vụ</th>
+                    <th>Tình trạng</th>
                 </tr>
             </thead>
         </table>
@@ -66,8 +66,8 @@
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tất cả "]],
             ajax: '{!! route('api.getBillApi') !!}',
             columns: [
+
                 { data: 'ma_hoa_don', name: 'ma_hoa_don' },
-                { data: 'ma_phieu_dat_phong', name: 'ma_phieu_dat_phong' },
                 { data: 'ten_phong', name: 'ten_phong' },
                 { data: 'ho_ten_khach', name: 'ho_ten_khach' },
                 { data: 'created_at', name: 'created_at' },
@@ -77,15 +77,15 @@
 
             "columnDefs":
                 [
+
                     {
                         "targets": 0,
-                        "title": "STT"
+                        "render": function ( data, type, row, meta ) {
+                            return '<a href="bill/getBillById/'+data+'">#'+data+'</a>';
+                        }
                     },
                     {
                         "targets": 1,
-                        "render": function ( data, type, row, meta ) {
-                        return '<a href="bill/getBillById/'+data+'">#'+data+'</a>';
-                        }
                     },
                     {
                         "targets": 2,
@@ -95,14 +95,18 @@
                     },
                     {
                         "targets": 4,
-                    },
-                    {
-                        "targets": 5,
 
                     },
                     {
-                        "targets": 6,
-                        defaultContent: '<button>abc</button>'
+                        "targets": 5,
+                        "render": function ( data, type, row, meta ) {
+                           if(row.tong_tien == null){
+                                return 'Chưa thanh toán';
+                           }
+                           if(row.tong_tien != null){
+                                return 'Đã thanh toán ';
+                           }
+                        }
                     }
 
                 ]

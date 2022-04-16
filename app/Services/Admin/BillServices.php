@@ -56,6 +56,7 @@ class BillServices{
 
             $bill =  $this->bill->where('ma_hoa_don',$id)->get();
             $roompass = $this->roompass->where('ma_phieu_dat_phong',$bill[0]->ma_phieu_dat_phong)->get();
+
             $customer =  $this->customer->find($roompass[0]->ma_khach_hang);
 
             $roomInfo = $this->room->where('ma_phong',$roompass[0]->ma_phong_dat)->get();
@@ -95,6 +96,34 @@ class BillServices{
             );
             return [
                 'infoBill' => $infoBIll
+            ];
+        }
+
+        public function getTotalMoney(){
+            $month = date('m');
+            $billMonthCurrent =$this->bill->whereMonth('created_at',$month)->get();
+            $billLastMonth =$this->bill->whereMonth('created_at',$month - 1)->get();
+            $totalCurrentMoney = 0;
+            $totalMoneyLastMonth = 0;
+            foreach($billMonthCurrent as $value){
+                $totalCurrentMoney = $totalCurrentMoney + $value->tong_tien;
+            }
+
+            foreach($billLastMonth as $value){
+                $totalMoneyLastMonth = $totalMoneyLastMonth + $value->tong_tien;
+            }
+            $percent = ($totalCurrentMoney - $totalMoneyLastMonth)/$totalMoneyLastMonth *100;
+
+            return [
+                'totalMonthCurrent' =>
+                        ['total'=>$totalCurrentMoney,
+                         'percent' => $percent
+                        ],
+                'totalLastCurrent' => [
+                          'total' => $totalMoneyLastMonth,
+                          'month' => $month -1
+                        ],
+
             ];
         }
 }

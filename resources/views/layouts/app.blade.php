@@ -199,7 +199,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{asset('./tpl_admin/index.html')}}">
+                    <a class="nav-link" href="{{ route('admin.home') }}">
                         <span class="menu-title">Thống kê</span>
                         <i class="mdi mdi-home menu-icon"></i>
                     </a>
@@ -210,12 +210,12 @@
                         <i class="mdi mdi-contacts menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.checkout')}}">
                         <span class="menu-title">Trả Phòng</span>
                         <i class="mdi mdi-table-large menu-icon"></i>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link enable" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
@@ -243,17 +243,12 @@
                     <div class="collapse" id="general-pages">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="{{route('admin.room.index')}}"> Phòng</a></li>
-{{--                            <li class="nav-item"><a class="nav-link" href="pages/samples/login.html"> Login </a></li>--}}
-{{--                            <li class="nav-item"><a class="nav-link" href="pages/samples/register.html"> Register </a>--}}
-{{--                            </li>--}}
-{{--                            <li class="nav-item"><a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>--}}
-{{--                            <li class="nav-item"><a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>--}}
                         </ul>
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.bill.getBill') }}">
+                    <a class="nav-link" href="{{'/admin/bill'}}">
                         <span class="menu-title">Danh sách hóa đơn</span>
                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
