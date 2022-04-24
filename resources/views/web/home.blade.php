@@ -66,7 +66,7 @@
     <header role="banner">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="index.html">SunQ Hotel</a>
+          <a class="navbar-brand" href="{{ route('web.home') }}">SunQ Hotel</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -107,9 +107,7 @@
     </header>
     <!-- END header -->
 
-
     <div class="hero" style="background-image: url('https://images.wallpaperscraft.com/image/single/burj_al_arab_hotel_dubai_uae_sky_sea_59061_3840x2160.jpg');"></div>
-
     <div class="block-chooseroom">
         <div class="container-fluid">
             <div class="row title-block-rooms">
