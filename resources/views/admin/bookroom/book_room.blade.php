@@ -296,7 +296,7 @@
                             <div class="card-body">
                                 <img src="{{$room->anh_phong}}" class="card-img-absolute" alt="no_image">
                                 <h4 class="font-weight-normal mb-3">{{$room->ten_phong}} <i
-                                        class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                    class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                 </h4>
                                 <span>
                             Mô tả :{{$room->mo_ta}}

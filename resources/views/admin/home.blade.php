@@ -105,10 +105,10 @@
                url: "{{ route('api.getDash') }}",
                dataType: "json",
                success: function (response) {
-                   $('.totalMonth').html(response.totalMonthCurrent.total +' VND');
-                   $('.precent').html(response.totalMonthCurrent.percent + '%');
+                   $('.totalMonth').html(parseFloat(response.totalMonthCurrent.total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+' VND');
+                $('.precent').html(parseFloat(response.totalMonthCurrent.percent).toFixed(2)+"%");
                    $('.monthLast').html(response.totalLastCurrent.month);
-                   $('.totalLastMonth').html(response.totalLastCurrent.total +' VND');
+                $('.totalLastMonth').html(parseFloat(response.totalLastCurrent.total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()+' VND');
                     console.log(response);
                }
            });

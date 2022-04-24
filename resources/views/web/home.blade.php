@@ -1,203 +1,264 @@
-<html lang="vi">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="Cache-control" content="public">
-<title>Hotel - Hanoi</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="alternate" type="application/rss+xml" title="" href="https://hoabinhhotel.com/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=vietnamese" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/templates/default/css/style.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/libraries/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/mainmenu/assets/css/jquery.mmenu.all.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/mainmenu/assets/css/megamenu_moblie.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/mainmenu/assets/css/menutop.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/mainmenu/assets/css/megamenu.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/libraries/OwlCarousel2-2.2.1/assets/owl.carousel.min.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/slideshow/assets/css/home.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/libraries/jquery/jquery.ui/jquery-ui.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/search/assets/css/default.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/rooms_list/assets/css/slideshow.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/discount/assets/css/discount.css">
-<link rel="stylesheet" type="text/css" media="screen" href="https://hoabinhhotel.com/blocks/mainmenu/assets/css/bottommenu.css">
+    <link rel="stylesheet" href="../client/fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="../client/css/owl.carousel.min.css">
 
-<body class="" style="overflow: visible;">
-    <div style="text-align: center; color: #55595A;">
-        <h3 id="hvn"><i class="fa fa-clock"></i>
-            <script>
-                var today = new Date();
-                var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear()+', '+today.getHours()+':'+today.getMinutes();
-                
-                document.getElementById("hvn").innerHTML = date;
-            </script>
-        </h3>
-    </div>
-    <!-- END: header -->
-    <div class="main row-content" id="main">
-        <div class="row-content pos_header">
-            <div class="block_slideshow slideshow-home slideshow__slideshow block">
-                <div id="owl-slideshow" class="owl-carousel owl-loaded owl-drag">
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage" style="transform: translate3d(-6545px, 0px, 0px); transition: all 0.5s ease 0s; width: 10285px;">
-                            <div class="owl-item cloned" style="width: 935px;">
-                                <div class="item">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../client/css/bootstrap.min.css">
 
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 935px;"></div>
-                            <div class="owl-item cloned" style="width: 935px;">
-                              
-                            </div>
-                            <div class="owl-item" style="width: 935px;"></div>
-                            <div class="owl-item" style="width: 935px;">
-                                <div class="item">
+    <!-- Style -->
+    <link rel="stylesheet" href="../client/css/style.css">
 
-                                </div>
-                            </div>
-                            <div class="owl-item" style="width: 935px;"></div>
-                            <div class="owl-item" style="width: 935px;"></div>
-                            <div class="owl-item active" style="width: 935px;">
-                                <div class="item">
-                                    <a href="">
-                                        <img class="img-responsive" src="https://hoabinhhotel.com/images/slideshow/2021/03/10/slideshow_large/11_1615351073.jpg" alt="Hoabinhhotel 4">
+    <title>SunQ Hotel</title>
+    <style>
+        .line-home-rooms {
+            width: 15%;
+            border: 0;
+            margin: auto;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+        .title-block{
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        .item-rooms{
+            margin-bottom: 30px;
+            display: block;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+        .item-rooms img{
+            border-radius: 6px;
+            transform: scale(1);
+            transition: all 0.25s linear;
+        }
+        .title-rooms{
+            color: #ffffff;
+            display: block;
+            float: left;
+            position: absolute;
+            bottom: 30px;
+            left: 25px;
+            line-height: 100%;
+            margin-right: 10px;
+            font-size: 16px;
+            font-weight: 100;
+        }
+        .item-rooms a:hover img{
+        border-radius: 6px;
+        transform: scale(1.05);
+        }
+    </style>
+  </head>
+  <body>
 
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 935px;">
-                                <div class="item">
-                                    <a href="">
-                                        <img class="img-responsive" src="https://hoabinhhotel.com/images/slideshow/2019/09/25/slideshow_large/185jpg_1569380560.jpg" alt="Hoabinhhotel">
 
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 935px;">
-                                <div class="item">
+    <header role="banner">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">SunQ Hotel</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 935px;">
-                                <div class="item">
+          <div class="collapse navbar-collapse" id="navbarsExample05">
+            <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Trang chủ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Về chúng tôi</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dịch vụ</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="#">Xe đưa đón sân bay</a>
+                  {{-- <a class="dropdown-item" href="#">Drink &amp; Beverages</a>
+                  <a class="dropdown-item" href="#">Wedding &amp; Birthday</a> --}}
+                </div>
+              </li>
+              {{-- <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">News</a>
+              </li> --}}
+            </ul>
 
-                                </div>
-                            </div>
-                        </div>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item cta-btn">
+                <a class="nav-link" href="#">Liên hệ chúng tôi</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+
+
+    <div class="hero" style="background-image: url('https://images.wallpaperscraft.com/image/single/burj_al_arab_hotel_dubai_uae_sky_sea_59061_3840x2160.jpg');"></div>
+
+    <div class="block-chooseroom">
+        <div class="container-fluid">
+            <div class="row title-block-rooms">
+                <div class="col-lg-12">
+                    <h1 class="title-block text-center">Phòng phù hợp nhất cho bạn</h1>
+                    <div class="line-home-rooms"></div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                @foreach ($data as $key)
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <figure class="item-rooms">
+                            <a href="{{ 'room/'.$key->ma_phong }}" title="Phòng VIP hướng biển" class="">
+                                <img src="http://phuongbacluxuryhotel.com/uploads/rooms/OSV/PBL_VIPBanner.png" alt="Phòng VIP hướng biển" class="img-rounded img-responsive">
+                                <figcaption class="title-rooms">
+                                    <h3>{{ $key->mo_ta }}</h3>
+                                </figcaption>
+                            </a>
+                        </figure>
                     </div>
-                </div>
-                <div class="search clearfix">
-                    <form class="clearfix" action="/store" name="form" id="search_form" method="post">
-                        @csrf
-                        <div class="col-search col-date">
-                            <span class="label-search">Họ Tên</span>
-                            <input type="text"  placeholder="Name" name="name" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Email</span>
-                            <input type="text"  placeholder="Email" name="email" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Số điện thoại</span>
-                            <input type="text" placeholder="Tel" name="phone" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Quốc tịch</span>
-                            <input type="text" placeholder="Nationality" name="quoctich" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Số CMND/CCCD</span>
-                            <input type="text" placeholder="CMND/CCCD" name="number" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Ngày đến</span>
-                            <input type="date" name="ngayDen" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Ngày đi</span>
-                            <input type="date" name="ngayDi" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-date">
-                            <span class="label-search">Số tiền đặt cọc</span>
-                            <input type="text" placeholder="Money" name="tiendatcoc" class="form-control datetime hasDatepicker">
-                        </div>
-                        <div class="col-search col-select">
-                            <span class="label-search">Phòng</span>
-                            <select id="room" name="room">
-                                <option value="1">1</option>';
-                                <option value="2">2</option>';
-                                <option value="3">3</option>';
-                                <option value="4">4</option>';
-                                <option value="5">5</option>';
-                                <option value="6">6</option>';
-                                <option value="7">7</option>';
-                                <option value="8">8</option>';
-                                <option value="9">9</option>';
-                                <option value="10">10</option>';
-                            </select>
-                        </div>
-                        <div class="col-search col-select">
-                            <span class="label-search">Số người</span>
-                            <select id="quantity" name="quantity">
-                                <option value="1">1</option>';
-                                <option value="2">2</option>';
-                                <option value="3">3</option>';
-                                <option value="4">4</option>';
-                                <option value="5">5</option>';
-                                <option value="6">6</option>';
-                                <option value="7">7</option>';
-                                <option value="8">8</option>';
-                                <option value="9">9</option>';
-                                <option value="10">10</option>';
-                            </select>
-                        </div>
-                        <div class="col-search col-btn">
-                            <!-- <input class="btn-primary" type="submit" name="" value="" /> -->
-                            <button type="submit" class="btn-primary btn-search-all">Đặt phòng</button>
-                        </div>
-                    </form>
-                </div>
-                
-                
-            </div>
-            
-            
-        </div>
-    </div>
-    </div>
-    </div> <!-- END: .pos-top -->
-    <div class="ml-2">@include('layouts/thongbao')</div>
-    </div>
-    <!-- END: main -->
-    <footer class="row-content" id="footer">
-        </div>
-        </div>
-        <div class="container info-footer" style="margin-bottom: 40px">
-            <div id="info-footer" class="col-lg-r col-lg-9 col-md-7 col-sm-12 col-xs-12">
-                <a class="logo-footer">
-                    <img src="{{asset('./tpl_admin/assets/images/logo-mini.svg')}}">
-                </a>
-                <div class="info-footer-right">
-                    <p>Địa chỉ: Số 17 Tạ Quang Bửu, Hà Nội<br>
-                        Tel: 024319865198<br>
-                        Email: <a href="mailto:thanhyp2001@gmail.com">thanhyp2001@gmail.com</a> <br>
-                        Facebook: <a href="https://www.facebook.com/thanham2001/">Nguyễn Trung Thành</a> <br>
-                        Youtube: <a href=""></a>
-                    </p>
-                </div>
+                @endforeach
             </div>
         </div>
-    </footer><!-- END: footer -->
+    </div>
+    <footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <!-- Left -->
 
-</body>
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
 
-<script>
-    var today = new Date().toISOString().split('T')[0];
-    document.getElementsByName("ngayDen")[0].setAttribute('min', today);
-    var today1 = new Date().toISOString().split('T')[0];
-    document.getElementsByName("ngayDi")[0].setAttribute('min', today1);
-</script>
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Company name
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
 
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+    <script src="../client/js/jquery-3.3.1.min.js"></script>
+    <script src="../client/js/popper.min.js"></script>
+    <script src="../client/js/bootstrap.min.js"></script>
+    <script src="../client/js/jquery.sticky.js"></script>
+    <script src="../client/js/main.js"></script>
+  </body>
 </html>

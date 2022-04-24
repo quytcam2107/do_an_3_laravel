@@ -112,7 +112,7 @@ ul.breadcrumb li a:hover {
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Đã sử dụng được</p></div>
-                        <div class="col-md-6">{{ $key->count_house }}</div>
+                        <div class="col-md-6">{{ $key->countday }}</div>
                     </div>
 
 

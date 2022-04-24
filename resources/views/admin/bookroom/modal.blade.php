@@ -24,11 +24,7 @@
                                          src="https://viettravelo.com/wp-content/uploads/2018/05/khach-san-indochine.jpg"
                                          alt="Second slide">
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100"
-                                         src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/img%20(25).webp"
-                                         alt="Third slide">
-                                </div>
+                              
                             </div>
                             <!--/.Slides-->
                             <!--Controls-->
