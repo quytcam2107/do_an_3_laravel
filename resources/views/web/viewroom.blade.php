@@ -150,7 +150,7 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                               <div class="carousel-item active">
-                                <img class="d-block w-100" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/a1/d2/af/hotel-r-de-paris.jpg?w=900&h=-1&s=1" alt="First slide">
+                                <img class="d-block w-100" src="{{ $data['anh_phong'] }}" alt="First slide">
                               </div>
                               <div class="carousel-item">
                                 <img class="d-block w-100" src="https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/92/2019/11/20071929/0919-AJS-NOI-Hotel-des-Arts-SGN-1091-Web-1500x690.jpg" alt="Second slide">
@@ -258,7 +258,7 @@
                                         </div>
                                     </div>
                                     <input type="text" class="form-control input-lg d-none" value="{{ $data['ten_phong'] }}" id="datepickerEnd" name="nameRoom" autocomplete="off" >
-                                        <button type="submit" name="selectRoom" id="orderRoom" value="{{ $data['ma_phong'] }}" class="btn btn-phuongbac btn-lg btn-block text-uppercase">Đặt phòng</button>
+                                        <button type="submit" style="background: #0d6efd!important" name="selectRoom" id="orderRoom" value="{{ $data['ma_phong'] }}" class="btn btn-phuongbac btn-lg btn-block text-uppercase">Đặt phòng</button>
                                     <div class="form-group" id="result"></div>
                                 </form>
                             </div>

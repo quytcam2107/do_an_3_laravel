@@ -86,7 +86,9 @@ class BookRoomService
         return response()->json(['data' => $customer]);
     }
     public function viewConfirm($id){
-        $room =  PhieuDatPhong::with('datphong','customer')->where('ma_phong_dat',$id)->get();
+        $room =  PhieuDatPhong::with('datphong','customer')->where('ma_phong_dat',$id)
+        ->orderBy('phieu_dat_phongs.ma_phieu_dat_phong', 'DESC')
+        ->first();
         return $room;
     }
     public function conFirmBookRoom($params){
@@ -94,8 +96,9 @@ class BookRoomService
         return $room;
     }
     public function inforRoomUsring($params){
-        $infoRoom =  PhieuDatPhong::with('phongs','khachhangs')->where('ma_phong_dat',$params['room_code'])->get();
-        $roomPassId = $infoRoom[0]['ma_phieu_dat_phong'];
+        $infoRoom =  PhieuDatPhong::with('phongs','khachhangs')->where('ma_phong_dat',$params['room_code'])->orderBy('ma_phieu_dat_phong', 'DESC')->first();
+
+        $roomPassId = $infoRoom['ma_phieu_dat_phong'];
         $usingService =  PhieuDichVu::with('dichvus','maphieudichvu')->where('ma_phieu_dat_phong',$roomPassId)->get();
         $services = $this->services->get();
 
@@ -134,5 +137,25 @@ class BookRoomService
         // return $insertService;
         return $roomBills;
     }
-
+public function userBook($params){
+    $this->customer->create([
+        'ho_ten_khach' => $params['fullname'],
+        'email' => $params['email'],
+        'so_dien_thoai' => $params['phone'],
+        'dia_chi' => $params['address'],
+        'gioi_tinh' => $params['gender'],
+        'so_cmnd' => $params['passport'],
+        'ghi_chu' => $params['specialrequired'],
+        'quoc_tich' => $params['national'],
+    ]);
+    $customer = $this->customer->get()->last();
+    $this->model->create([
+        'ma_khach_hang' => $customer['ma_khach_hang'],
+        'ma_phong_dat' => $params['idRoom'],
+        'so_nguoi_di_kem' => $params['people'],
+        'ngay_den' => $params['checkIn'],
+        'ngay_di' => $params['checkOut'],
+    ]);
+    $this->room->where('ma_phong', $params['idRoom'])->update(['tinh_trang_phong' => Phong::ROOM_ODERED]);
+}
 }

@@ -28,7 +28,6 @@ class UserController extends Controller
         $data = $data['rooms_ready'];
         return view('web.home',compact('data'));
     }
-
     public function themKhachHang(Request $req){
         return $req->all();
         // return redirect()->back()->with('success','Chúc mừng bạn đã đặt phòng thành công');
@@ -38,6 +37,9 @@ class UserController extends Controller
         return view('web.booking',compact('data'));
     }
     public function bookings(Request $req){
-        return $req->all();
+        $datas = $this->bookRoomService->userBook($req->all());
+        $data = $this->bookRoomService->index();
+        $data = $data['rooms_ready'];
+        return view('web.home',compact('data'));
     }
 }

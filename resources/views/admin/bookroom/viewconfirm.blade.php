@@ -201,7 +201,8 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Thông tin khách hàng</h4>
-            @foreach ($data as $key)
+
+
             <div class="row">
                 <div class="col-md-4">
                 <p>Tên khách hàng</p>
@@ -215,28 +216,27 @@
                 <p>Dự kiến trả phòng</p>
                 <p>Thời gian thuê : </p>
                  </div>
-
                  <div class="col-md-8 col-lg-8">
 
-                    <p class="font-weight-bold">  {{ $key->customer['ho_ten_khach'] }}</p>
-                    <p class="font-weight-bold">  {{ $key->customer['dia_chi'] }} </p>
-                    <p class="font-weight-bold">  {{ $key->customer['gioi_tinh']}} </p>
-                    <p class="font-weight-bold">   {{ $key->customer['so_cmnd']}} </p>
-                    <p class="font-weight-bold">   {{ $key->datphong['ten_phong']}} </p>
-                    <p class="font-weight-bold">   {{ $key->datphong['gia_phong']}} </p>
+                    <p class="font-weight-bold">   {{ $data->customer['ho_ten_khach'] }} </p>
+                    <p class="font-weight-bold">  {{  $data->customer['dia_chi'] }} </p>
+                    <p class="font-weight-bold">  {{ $data->customer['gioi_tinh']}} </p>
+                    <p class="font-weight-bold">   {{ $data->customer['so_cmnd']}} </p>
+                    <p class="font-weight-bold">   {{ $data->datphong['ten_phong']}} </p>
+                    <p class="font-weight-bold">   {{ $data->datphong['gia_phong']}} </p>
                     {{-- <p class="font-weight-bold">   {{ $key->tien_dat_coc}} </p> --}}
-                    <p class="font-weight-bold">   {{ $key->date_book}} </p>
-                    <p class="font-weight-bold">   {{ $key->count_day }} </p>
+                    <p class="font-weight-bold">   {{ $data->date_book}} </p>
+                    <p class="font-weight-bold">   {{ $data->count_day }} </p>
                  </div>
                  <form method="POST" action="{{ route('admin.bookroom.confirm') }}">
                     @csrf
-                    <input class="d-none" name="id_customer" value="{{ $key->ma_khach_hang}}">
-                    <input class="d-none" name="booking_code" value="{{ $key->ma_phieu_dat_phong}}">
-                    <input class="d-none" name="room_code" value="{{ $key->ma_phong_dat}}">
+                    <input class="d-none" name="id_customer" value="{{ $data->ma_khach_hang}}">
+                    <input class="d-none" name="booking_code" value="{{ $data->ma_phieu_dat_phong}}">
+                    <input class="d-none" name="room_code" value="{{ $data->ma_phong_dat}}">
                      <button type="submit">Xác nhận đặt phòng</button>
                 </form>
             </div>
-            @endforeach
+      
         </div>
         </div>
     </div>

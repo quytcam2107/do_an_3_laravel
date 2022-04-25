@@ -61,34 +61,34 @@ ul.breadcrumb li a:hover {
             <div class="card">
                 <div class="card-body card-pd-0">
 
+
                     {{-- {{ dd($data['inforRoom'][0]->ma_phieu_dat_phong) }} --}}
-                    @foreach ($data['inforRoom'][0]['khachhangs'] as $key)
 
                     <h4 class="card-title"><i class="mdi mdi-account-check mr-2"></i>Thông tin người sử dụng </h4>
                     <div class="row">
                         <div class="col-md-6"><p>Khách hàng</p></div>
-                        <div class="col-md-6">{{ $key->ho_ten_khach }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->ho_ten_khach }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Địa chỉ</p></div>
-                        <div class="col-md-6">{{ $key->dia_chi }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->dia_chi }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><pGiới tính</p></div>
-                        <div class="col-md-6">{{ $key->gioi_tinh == 1 ? "Nam" : "Nữ" }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->gioi_tinh == 1 ? "Nam" : "Nữ" }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Số điện thoại</p></div>
-                        <div class="col-md-6">{{ "0".$key->so_dien_thoai }}</div>
+                        <div class="col-md-6">{{ "0".$data['inforRoom']->so_dien_thoai }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Số CMND</p></div>
-                        <div class="col-md-6">{{ "0".$key->so_cmnd }}</div>
+                        <div class="col-md-6">{{ "0".$data['inforRoom']->so_cmnd }}</div>
                     </div>
                     <div class="btn-center">
                         <a href="" class="btn btn-gradient-info btn-fw">Xem thông tin tiết</a>
                     </div>
-                    @endforeach
+
 
                 </div>
             </div>
@@ -96,23 +96,23 @@ ul.breadcrumb li a:hover {
         <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body card-pd-0">
-                    @foreach ($data['inforRoom'] as $key)
+
                     <h4 class="card-title"><i class="mdi mdi-home-map-marker mr-2"></i>Thông tin phòng sử dụng</h4>
                     <div class="row">
                         <div class="col-md-6"><p>Thời gian nhận phòng</p></div>
-                        <div class="col-md-6">{{ $key->ngay_den }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->ngay_den }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Ngày trả phòng</p></div>
-                        <div class="col-md-6">{{ $key->ngay_di }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->ngay_di }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Tiền đặt cọc</p></div>
-                        <div class="col-md-6">{{ $key->tien_dat_coc }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->tien_dat_coc }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Đã sử dụng được</p></div>
-                        <div class="col-md-6">{{ $key->countday }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->countday }}</div>
                     </div>
 
 
@@ -191,7 +191,7 @@ ul.breadcrumb li a:hover {
                             <div class="col-md-6">
                                 {{-- <button  id="subQuanti">-</button> --}}
                                 <span><input class="d-none" type="number"  id="number_services" value="0"></span>
-                                <button class="btn-update-quantity btn btn-social-icon btn-linkedin btn-rounded" data-id="{{ $key->ma_dich_vu }}" data-id-service="{{ $data['inforRoom'][0]->ma_phieu_dat_phong }}" data-type="incre" id="plusQuanti">+</button>
+                                <button class="btn-update-quantity btn btn-social-icon btn-linkedin btn-rounded" data-id="{{ $key->ma_dich_vu }}" data-id-service="{{ $data['inforRoom']->ma_phieu_dat_phong }}" data-type="incre" id="plusQuanti">+</button>
                             </div>
 
                         @endforeach
@@ -209,11 +209,11 @@ ul.breadcrumb li a:hover {
       </div>
     {{-- <form method="POST" action="{{ route('admin.bill.createBill') }}"> --}}
         @csrf
-        <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $data['inforRoom'][0]->ma_phieu_dat_phong}}">
+        <input class="d-none vl_idroom" id="book_room_id"  name="book_room_id" value="{{ $data['inforRoom']->ma_phieu_dat_phong}}">
 
         <button id="book" class="btn btn-outline-dark btn-fwo" data-toggle="modal" data-target="#exampleModal">Tạo hóa đơn</button>
     {{-- </form> --}}
-    @endforeach
+
     </div>
 
 </div>

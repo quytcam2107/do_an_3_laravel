@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BookRoomController;
 use App\Http\Controllers\Admin\CheckoutController;
+use App\Http\Controllers\Api\ApiBillController;
+use App\Http\Controllers\Api\ApiDashController;
 use App\Http\Controllers\Common\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,5 +65,5 @@ Route::prefix('admin')->group(function () {
 });
 
 //test
-Route::get('/test', [BillController::class, 'testReQuest'])->name('test');
+Route::get('/test', [ApiDashController::class, 'getTotalMoney'])->name('test');
 

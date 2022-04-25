@@ -121,7 +121,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <figure class="item-rooms">
                             <a href="{{ 'room/'.$key->ma_phong }}" title="Phòng VIP hướng biển" class="">
-                                <img src="http://phuongbacluxuryhotel.com/uploads/rooms/OSV/PBL_VIPBanner.png" alt="Phòng VIP hướng biển" class="img-rounded img-responsive">
+                                <img src="{{ $key->anh_phong }}" alt="Phòng VIP hướng biển" width="350px" height="200px" class="img-rounded img-responsive">
                                 <figcaption class="title-rooms">
                                     <h3>{{ $key->mo_ta }}</h3>
                                 </figcaption>

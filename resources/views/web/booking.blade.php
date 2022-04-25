@@ -100,6 +100,9 @@
         .btn-custom{
             padding: 11px;
         }
+        .bold{
+          font-weight: bold;
+        }
     </style>
   </head>
   <body>
@@ -148,14 +151,19 @@
       </header>
     </div>
   <div class="block-detail-post pt-5">
-      <form method="post" action="{{ route('web.bookings') }}">
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
+      <h2 class="text-center">Đặt phòng</h2>
         @csrf
     <div class="container">
         <div class="row bg-light text-dark mt-2">
             <div class="d-flex flex-wrap">
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i> Đêm</label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i> <span class="bold">Đêm</span></label>
                         <p><strong>
                             {{ \Carbon\Carbon::parse($data['checkout'])->format('d') - \Carbon\Carbon::parse($data['checkin'])->format('d')}}
                         </strong></p>
@@ -163,19 +171,19 @@
                 </div>
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i> Số người</label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i> <span class="bold">Số người</span></label>
                         <p><strong>{{ $data['people'] }}</strong></p>
                     </div>
                 </div>
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i>Ngày nhận phòng</label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i><span class="bold">Ngày nhận phòng</span></label>
                         <p><strong>{{ $data['checkin'] }}</strong></p>
                     </div>
                 </div>
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i>Ngày Trả phòng</label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i><span class="bold">Ngày trả phòng</span></label>
                         <p><strong>{{ $data['checkin'] }}</strong></p>
                     </div>
                 </div>
@@ -185,7 +193,7 @@
             <div class="d-flex flex-wrap">
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i> Tên phòng</label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i><span class="bold">Tên phòng</span></label>
                         <p><strong>
                           {{ $data['nameRoom'] }}
                         </strong></p>
@@ -193,13 +201,13 @@
                 </div>
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i> Giá phòng </label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i><span class="bold">Gía phòng</span></label>
                         <p><strong>{{ $data['price'] ?? 'Liên hệ' }}</strong></p>
                     </div>
                 </div>
                 <div class="col-auto">
                     <div class="form-group">
-                        <label><i class="fa fa-calendar" aria-hidden="true"></i>Tổng thanh toán </label>
+                        <label><i class="fa fa-calendar" aria-hidden="true"></i><span class="bold">Tổng thanh toán</span> </label>
                         <p><strong>{{ $data['total'] ?? 'Liên hệ' }}</strong></p>
                     </div>
                 </div>
@@ -212,6 +220,8 @@
             </div>
         </div>
         <div class="row bg-light text-dark mt-3">
+            <form method="post" action="{{ route('web.bookings') }}" style="width: 1000px;">
+                @csrf
                 <div class="container">
 				<div class="col-auto">
 					<h3 class="title">Thông tin khách hàng</h3>
@@ -227,23 +237,43 @@
 						<label>Email (*)</label>
 						<input type="email" class="form-control" name="email" id="email" maxlength="100" required="">
 					</div>
+                    <div class="form-group">
+						<label>Giới tính (*)</label>
+						<select name="gender" class="form-control">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+					</div>
+                    <div class="form-group">
+						<label>Số CMND (*)</label>
+						<input type="text" class="form-control" name="passport" id="nameCustomer" maxlength="100" required="">
+					</div>
+                    <div class="form-group">
+						<label>Địa chỉ (*)</label>
+						<input type="text" class="form-control" name="address" id="nameCustomer" maxlength="100" required="">
+					</div>
+                    <div class="form-group">
+						<label>Quốc tịch (*)</label>
+						<input type="text" class="form-control" name="national" id="nameCustomer" maxlength="100" required="">
+					</div>
 					<div class="form-group">
 						<label for="specialrequired">Yêu cầu</label>
 						<textarea class="form-control" name="specialrequired" id="specialrequired" maxlength="300" rows="3"></textarea>
 					</div>
 					<hr>
-                    <input type="text" class="d-none" id="nameRoom" value="{{ $data['selectRoom'] }}">
-                    <input type="text" class="d-none" id="checkIn" value="{{ $data['checkin'] }}">
-                    <input type="text" class="d-none" id="checkOut" value="{{ $data['checkout'] }}">
-                    <input type="text" class="d-none" id="people" value="{{ $data['people'] }}">
+                    <input type="text" name="idRoom" class="d-none" id="idRoom" value="{{ $data['selectRoom'] }}">
+                    <input type="text" name="checkIn" class="d-none" id="checkIn" value="{{ $data['checkin'] }}">
+                    <input type="text" name="checkOut" class="d-none" id="checkOut" value="{{ $data['checkout'] }}">
+                    <input type="text" name="people" class="d-none" id="people" value="{{ $data['people'] }}">
 			</div>
         </div>
+
         </div>
     </div>
     <div class="row">
         <div class="container-fluid">
-        <div class="buttonPayment">
-                <button type="submit"  class="btn btn-phuongbac btn-lg btn-block text-uppercase col-3">xác nhận đặt phòng</button>
+        <div class="buttonPayment mt-4 mb-4">
+                <button style="margin-left: 680px" type="submit"  class="btn btn-phuongbac btn-lg btn-block text-uppercase col-3">xác nhận đặt phòng</button>
         </div>
      </div>
     </div>
