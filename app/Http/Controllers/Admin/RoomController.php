@@ -26,4 +26,8 @@ class RoomController extends Controller
         DB::table('phongs')->insert($input);
         return redirect()->back();
     }
+    public function updateStatus(Request $request){
+        $room = Phong::find($request->id)->update(['tinh_trang_phong' => 1]);
+        return response()->json($room);
+    }
 }

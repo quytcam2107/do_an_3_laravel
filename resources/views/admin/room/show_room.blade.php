@@ -167,7 +167,7 @@
                                         <td><button type="button" class="btn btn-gradient-success btn-fw">Có thể sử dụng</button></td>
                                     @endif
                                     @if($room->tinh_trang_phong == 2)
-                                        <td ><button type="button" class="btn btn-gradient-warning btn-rounded btn-fw">Chưa dọn dẹp</button></td>
+                                        <td ><button value="{{$room->ma_phong}}" type="button" class="btn btn-gradient-warning btn-rounded btn-fw no-clear">Chưa dọn dẹp</button></td>
                                     @endif
                                     @if($room->tinh_trang_phong == 3)
                                         <td ><button type="button" class="btn btn-gradient-warning btn-rounded btn-fw">Đang sử dụng</button></td>
@@ -208,6 +208,31 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{ url('js/admin/room.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+                $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                });
+            $('.no-clear').on('click', function () {
+                var id = $(this).val();
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('admin.room.updateStatus') }}",
+                    data: {
+                        id:id
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        alert("Đã dọn dẹp xong , Có thể sử dụng !");
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
 
 

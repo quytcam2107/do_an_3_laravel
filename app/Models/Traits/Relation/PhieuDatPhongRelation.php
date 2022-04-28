@@ -15,7 +15,7 @@ trait PhieuDatPhongRelation{
     }
     public function khachhangs()
     {
-        return $this->hasMany(KhachHang::class,'ma_khach_hang');
+        return $this->hasMany(KhachHang::class,'ma_khach_hang','ma_khach_hang');
     }
     public function datphong()
     {

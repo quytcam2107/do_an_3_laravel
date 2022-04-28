@@ -27,7 +27,7 @@ class RoomSeeder extends Seeder
                 $room->tang = rand(1,5);
                 $room->gia_phong = $gia_phong;
                 $room->mo_ta = 'Mô tả test';
-                $room->anh_phong = 'Null';
+                $room->anh_phong = 'https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=';
                 $room->gia_phong = $gia_phong;
                 $room->tinh_trang_phong = 1;
                 $room->created_at = 10010 . date('y') . (($rand < 10) ? ('0' . $rand) : $rand);

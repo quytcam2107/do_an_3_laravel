@@ -97,7 +97,6 @@ class BookRoomService
     }
     public function inforRoomUsring($params){
         $infoRoom =  PhieuDatPhong::with('phongs','khachhangs')->where('ma_phong_dat',$params['room_code'])->orderBy('ma_phieu_dat_phong', 'DESC')->first();
-
         $roomPassId = $infoRoom['ma_phieu_dat_phong'];
         $usingService =  PhieuDichVu::with('dichvus','maphieudichvu')->where('ma_phieu_dat_phong',$roomPassId)->get();
         $services = $this->services->get();
@@ -134,7 +133,6 @@ class BookRoomService
 
 
         // $insertService = $this->services->get();
-        // return $insertService;
         return $roomBills;
     }
 public function userBook($params){

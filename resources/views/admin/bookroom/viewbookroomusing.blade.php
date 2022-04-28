@@ -63,27 +63,28 @@ ul.breadcrumb li a:hover {
 
 
                     {{-- {{ dd($data['inforRoom'][0]->ma_phieu_dat_phong) }} --}}
+                    {{-- {{ dd($data['inforRoom']->khachhangs[0]->ho_ten_khach) }} --}}
 
                     <h4 class="card-title"><i class="mdi mdi-account-check mr-2"></i>Thông tin người sử dụng </h4>
                     <div class="row">
                         <div class="col-md-6"><p>Khách hàng</p></div>
-                        <div class="col-md-6">{{ $data['inforRoom']->ho_ten_khach }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->khachhangs[0]->ho_ten_khach }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Địa chỉ</p></div>
-                        <div class="col-md-6">{{ $data['inforRoom']->dia_chi }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->khachhangs[0]->dia_chi }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><pGiới tính</p></div>
-                        <div class="col-md-6">{{ $data['inforRoom']->gioi_tinh == 1 ? "Nam" : "Nữ" }}</div>
+                        <div class="col-md-6">{{$data['inforRoom']->khachhangs[0]->gioi_tinh == 1 ? "Nam" : "Nữ" }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Số điện thoại</p></div>
-                        <div class="col-md-6">{{ "0".$data['inforRoom']->so_dien_thoai }}</div>
+                        <div class="col-md-6">{{ "0".$data['inforRoom']->khachhangs[0]->so_dien_thoai }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Số CMND</p></div>
-                        <div class="col-md-6">{{ "0".$data['inforRoom']->so_cmnd }}</div>
+                        <div class="col-md-6">{{ "0".$data['inforRoom']->khachhangs[0]->so_cmnd }}</div>
                     </div>
                     <div class="btn-center">
                         <a href="" class="btn btn-gradient-info btn-fw">Xem thông tin tiết</a>
@@ -108,7 +109,7 @@ ul.breadcrumb li a:hover {
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Tiền đặt cọc</p></div>
-                        <div class="col-md-6">{{ $data['inforRoom']->tien_dat_coc }}</div>
+                        <div class="col-md-6">{{ $data['inforRoom']->tien_dat_coc ?? 'Chưa cọc' }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><p>Đã sử dụng được</p></div>
